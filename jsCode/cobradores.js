@@ -60,7 +60,7 @@ firebase.initializeApp({
 
   
       
-
+//Mostrar datos a la tabla
   var tabla = document.getElementById('tablaCobradores');
   var conteo=0;
   db.collection("Cobradores").onSnapshot((querySnapshot) => {
@@ -92,3 +92,20 @@ firebase.initializeApp({
     });
 
   });
+
+  //Eliminar Cobrador
+  function eliminarCobrador(id){
+
+    var opcion = confirm("Desea eliminar el Cobrador");
+
+    if(opcion==true){
+      db.collection("Cobradores").doc(id).delete().then(function(){
+        alert("Cobrador Eliminado");
+      }).catch(function(error){
+        alert("Error al eliminar el Cobrador")
+      })
+    }else{
+      nombre.focus();
+    }
+
+  }
