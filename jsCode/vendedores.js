@@ -17,55 +17,68 @@ firebase.initializeApp({
       var curp = document.getElementById('curp').value;
       var usuario = document.getElementById('usuario').value;
       var contrasena = document.getElementById('contrasena').value;
+      var contrasenaVerificar = document.getElementById('confiContrasena').value;
       var edad = document.getElementById('edad').value;
       var numeroTelefono = document.getElementById('numeroTelefono').value;
       var correo = document.getElementById('correo').value;
       var genero = document.getElementById('genero').value;
 
-      //var mensaje = document.getElementById('mensajeConfi');
+      var mensaje = document.getElementById('mensajeConfi');
       
-      db.collection("Vendedores").add({
-          Curp:curp,
-          Nombre: nombre,
-          Apellido_Paterno: apellidoP,
-          Apellido_Materno: apellidoM,
-          Usuario: usuario,
-          Contrasena: contrasena,
-          Edad: edad,
-          Numero_De_Telefono: numeroTelefono,
-          Correo:correo,
-          Genero: genero
-      })
+      if (contrasena==contrasenaVerificar)
+      {
+          db.collection("Vendedores").add({
+            Curp:curp,
+            Nombre: nombre,
+            Apellido_Paterno: apellidoP,
+            Apellido_Materno: apellidoM,
+            Usuario: usuario,
+            Contrasena: contrasena,
+            Edad: edad,
+            Numero_De_Telefono: numeroTelefono,
+            Correo:correo,
+            Genero: genero
+        })
 
-      .then(function(docRef){
-        console.log("Document written with ID: ", docRef.id);
-          //mensaje.innerHTML("<p>Usuario guardado</p>")
-          document.getElementById('nombreCompleto').value='';
-          document.getElementById('apellidoP').value='';
-          document.getElementById('apellidoM').value='';
-          document.getElementById('curp').value='';
-          document.getElementById('usuario').value='';
-          document.getElementById('contrasena').value='';
-          document.getElementById('edad').edad='';
-          document.getElementById('numeroTelefono').value='';
-          document.getElementById('correo').value='';
-      })
+        .then(function(docRef){
+          console.log("Document written with ID: ", docRef.id);
+            mensaje.innerHTML=`Vendedor guardado`;
+            mensaje.className="alert alert-success"
+            document.getElementById('nombreCompleto').value='';
+            document.getElementById('apellidoP').value='';
+            document.getElementById('apellidoM').value='';
+            document.getElementById('curp').value='';
+            document.getElementById('usuario').value='';
+            document.getElementById('contrasena').value='';
+            document.getElementById('confiContrasena').value='';
+            document.getElementById('edad').value='';
+            document.getElementById('numeroTelefono').value='';
+            document.getElementById('correo').value='';
+        })
 
-      .catch(function(error){
-        console.error("Error adding document: ", error);
-        //mensaje.innerHTML("<p>No se puede guardar el Usuario</p>")
-      });
+        .catch(function(error){
+          console.error("Error adding document: ", error);
+          mensaje.innerHTML=`No se puede guardar el Usuario`;
+          mensaje.className="alert alert-danger"
+        });
+      }
+      else
+      {
+        mensaje.innerHTML=`Las contraseñas no coinciden, Favor de verificarlas`;
+        mensaje.className="alert alert-info"
+      }
+
   }
 
 
   
       
-
+//Mostrar datos en la tabla Vendedores
   var tabla = document.getElementById('tablaVendedores');
-  var conteo=0;
+  
   db.collection("Vendedores").onSnapshot((querySnapshot) => {
     tabla.innerHTML=''; 
-
+    var conteo=0;
     querySnapshot.forEach((doc) => {
       conteo=conteo+1;
       console.log(`${doc.id} => ${doc.data()}`);
@@ -83,12 +96,24 @@ firebase.initializeApp({
       <th scope="row">`+doc.data().Correo+`</th>
       <th scope="row">`+doc.data().Genero+`</th>
 
-      <td><button class="btn btn-danger">Eliminar</button></td>
+      <td><button class="btn btn-danger" onclick="eliminarVendedores('${doc.id}')">Eliminar</button></td>
       <td><button class="btn btn-warning">Modificar</button></td>
 
       </tr>
       `
-
     });
-
   });
+
+  //Eliminar Vendedores
+  function eliminarVendedores(id){
+    var opcion = confirm("Desea eliminar el Vendedor");
+      if(opcion==true){
+        db.collection("Vendedores").doc(id).delete().then(function(){
+          alert("Vendedor Eliminado");
+        }).catch(function(error){
+          alert("Error al eliminar el Vendedor",error)
+        })
+      }else{
+        nombre.focus();
+      }
+  }

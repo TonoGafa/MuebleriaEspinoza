@@ -38,7 +38,7 @@ firebase.initializeApp({
       })
       .then(function(docRef){
         console.log("Document written with ID: ", docRef.id);
-        document.getElementById('mensajeConfi').innerHTML=`Usuario guardado`;
+        document.getElementById('mensajeConfi').innerHTML=`Cobrador guardado`;
         document.getElementById('mensajeConfi').className="alert alert-success";        
           document.getElementById('nombreCompleto').value='';
           document.getElementById('apellidoP').value='';
@@ -46,7 +46,8 @@ firebase.initializeApp({
           document.getElementById('curp').value='';
           document.getElementById('usuario').value='';
           document.getElementById('contrasena').value='';
-          document.getElementById('edad').edad='';
+          document.getElementById('confiContrasena').value='';
+          document.getElementById('edad').value='';
           document.getElementById('numeroTelefono').value='';
           document.getElementById('correo').value='';
       })
@@ -89,7 +90,7 @@ firebase.initializeApp({
       <th scope="row">`+doc.data().Correo+`</th>
       <th scope="row">`+doc.data().Genero+`</th>
       
-      <td><button class="btn btn-danger" onclick="eliminar('${doc.id}')">Eliminar</button></td>
+      <td><button class="btn btn-danger" onclick="eliminarCobrador('${doc.id}')">Eliminar</button></td>
       <td><button class="btn btn-warning">Modificar</button></td>
       </tr>
       `
