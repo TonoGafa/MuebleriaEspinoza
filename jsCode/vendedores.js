@@ -97,8 +97,7 @@ firebase.initializeApp({
       <th scope="row">`+doc.data().Genero+`</th>
 
       <td><button class="btn btn-danger" onclick="eliminarVendedores('${doc.id}')">Eliminar</button></td>
-      <td><button class="btn btn-warning">Modificar</button></td>
-
+      <td><button class="btn btn-warning" onclick="EditarCobradores('${doc.id}','${doc.data().Nombre}','${doc.data().Apellido_Paterno}','${doc.data().Apellido_Materno}','${doc.data().Curp}','${doc.data().Usuario}','${doc.data().Edad}','${doc.data().Numero_De_Telefono}','${doc.data().Correo}','${doc.data().Genero}')">Modificar</button></td>
       </tr>
       `
     });
@@ -117,3 +116,79 @@ firebase.initializeApp({
         nombre.focus();
       }
   }
+
+    //Editar Vendedores
+
+function EditarCobradores(Id,nombre,apellidoP,apellidoM,curp,usuario,edad,numeroTelefono,correo,genero){
+
+  document.getElementById('nombreCompleto').value = nombre;
+  document.getElementById('apellidoP').value = apellidoP;
+  document.getElementById('apellidoM').value = apellidoM;
+  document.getElementById('curp').value = curp;
+  document.getElementById('usuario').value = usuario;
+  var contrasena = document.getElementById('contrasena');
+  var contrasenaVerificar = document.getElementById('confiContrasena');
+  document.getElementById('edad').value = edad;
+  document.getElementById('numeroTelefono').value = numeroTelefono;
+  document.getElementById('correo').value = correo;
+  document.getElementById('genero').value = genero;
+  
+  contrasena.innerHTML=`************`;
+  contrasenaVerificar.innerHTML=`************`;
+  contrasena.disabled=true;
+  contrasenaVerificar.disabled=true;
+
+  var boton = document.getElementById('btnVendedores');
+  boton.innerHTML='Editar';
+  boton.classList.add('btn-warning');
+
+  boton.onclick=function(){
+
+      var washingtonRef = db.collection("Vendedores").doc(Id);
+      // Se manda los datos ya actualizados
+      var nombre = document.getElementById('nombreCompleto').value;
+      var apellidoP = document.getElementById('apellidoP').value;
+      var apellidoM = document.getElementById('apellidoM').value;
+      var curp = document.getElementById('curp').value;
+      var usuario = document.getElementById('usuario').value;
+      var edad = document.getElementById('edad').value;
+      var numeroTelefono = document.getElementById('numeroTelefono').value;
+      var correo = document.getElementById('correo').value;
+      var genero = document.getElementById('genero').value;
+
+      return washingtonRef.update({
+        Curp:curp,
+        Nombre: nombre,
+        Apellido_Paterno: apellidoP,
+        Apellido_Materno: apellidoM,
+        Usuario: usuario,
+        Edad: edad,
+        Numero_De_Telefono: numeroTelefono,
+        Correo:correo,
+        Genero: genero
+      })
+      .then(function() {
+          boton.classList.add('btn-info');
+          boton.classList.remove('btn-warning');
+          boton.innerHTML='Guardar';
+          document.getElementById('mensajeConfi').innerHTML=`Vendedor Modificado`;
+          document.getElementById('mensajeConfi').className="alert alert-success";        
+            document.getElementById('nombreCompleto').value='';
+            document.getElementById('apellidoP').value='';
+            document.getElementById('apellidoM').value='';
+            document.getElementById('curp').value='';
+            document.getElementById('usuario').value='';
+            document.getElementById('contrasena').value='';
+            document.getElementById('confiContrasena').value='';
+            document.getElementById('edad').value='';
+            document.getElementById('numeroTelefono').value='';
+            document.getElementById('correo').value='';
+      })
+      .catch(function(error) {
+        document.getElementById('mensajeConfi').innerHTML=`Error al Modificar`;
+        document.getElementById('mensajeConfi').className="alert alert-warning";        
+      });
+  }
+
+
+}
