@@ -48,128 +48,164 @@
     <br>
 
 
-    <!-- <--> 
+    <!-- registro de Cliente<--> 
     <div id="contact" class="contact">
-        <div class="container">
-            <div class="row">
-                <h2 class="wow fadeInUp">Registrar a un nuevo CLIENTE</h2>
+      <div class="container">
+          <div class="row">
+              <h2 class="wow fadeInUp">Registrar a un nuevo Cliente</h2>
+              <div class="col-lg-6 ">
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                      <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                      <input id="nombre" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Nombe (s)">
+                  </div>
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                      <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                      <input id="apellidoP" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Apellido Paterno">
+                  </div>
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                      <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                      <input id="apellidoM" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Apellido Materno">
+                  </div>
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                      <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                      <input id="curp" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="CURP">
+                  </div>
 
-                <form class="needs-validation input-group-lg wow fadeInUp" novalidate>
-                    <div class="form-row input-group-lg wow fadeInUp " data-wow-delay="1.6s">
-                      <div class="col-md-4 mb-3 input-group-lg wow fadeInUp " data-wow-delay="1.6s">
-                          <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" aria-describedby="sizing-addon1" id="validationCustom01" 
-                        placeholder="NOMBRE(S)"  required>
-                      </div>
-                      <div class="col-md-4 mb-3 input-group-lg wow fadeInUp " data-wow-delay="1.6s"">
-                        <label for="validationCustom02">APELLIDOS</label>
-                        <input type="text" class="form-control" id="validationCustom02"
-                         placeholder="APELLIDOS"  required>
-                      </div>
-                
-                    <div class="form-row input-group-lg wow fadeInUp " data-wow-delay="1.6s">
-                      <div class="col-md-6 mb-3 input-group-lg wow fadeInUp " data-wow-delay="1.6s">
-                        <label for="validationCustom03">DIRECCION</label>
-                        <input type="text" class="form-control" id="validationCustom03" placeholder="DIRECCION" required>
-                      </div>
-                      <div class="col-md-3 mb-3 input-group-lg wow fadeInUp " data-wow-delay="1.6s">
-                        <label for="validationCustom04">CIUDAD</label>
-                        <input type="text" class="form-control" id="validationCustom04" placeholder="CIUDAD" required>
-                      </div>
-                      <div class="col-md-3 mb-3 input-group-lg wow fadeInUp " data-wow-delay="1.6s">
-                        <label for="validationCustom05">CODIGO POSTAL</label>
-                        <input type="text" class="form-control" id="validationCustom05" placeholder="CP" required>
-                      </div>
-                    </div>
-                    <div class="form-group input-group-lg wow fadeInUp " data-wow-delay="1.6s">
-                      <div class="form-check input-group-lg wow fadeInUp" data-wow-delay="0.8s"">
-                        <input class="form-check-input input-group-lg wow fadeInUp " type="checkbox" value="" id="invalidCheck" required>
-                        <label class="form-check-label" for="invalidCheck">
-                          ACEPTA LOS TERMINOS Y CONDICIONES
-                        </label>
-                      </div>
-                      <br>
-                    </div>
-                    <form class="was-validated">
-                            <div class="mb-3">
-                              <label for="validationTextarea">DESCRIPCIÓN DE LA CASA</label>
-                              <textarea class="form-control is-invalid" id="validationTextarea"
-                               placeholder="DESCRIBE EL LUGAR HABITACIÓN" required></textarea>
-                            
-                            </div>
-                          
-                            <div class="custom-control custom-checkbox mb-3">
-                              <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
-                              <label class="custom-control-label" for="customControlValidation1">TRABAJA</label>
-                             
-                          
-                            <div class="custom-control custom-radio">
-                              <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
-                              <label class="custom-control-label" for="customControlValidation2">ESTUDIA</label>
-                            </div>
-                            <div class="custom-control custom-radio mb-3">
-                              <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
-                              <label class="custom-control-label" for="customControlValidation3">ESTA CASADO</label>
-                            </div>
-                          
-                            <div class="form-group">
-                              <select class="custom-select" required>
-                                <option value="">CUANTOS FAMILIARES VIVEN EN CASA</option>
-                                <option value="1">1-3</option>
-                                <option value="2">4-6</option>
-                                <option value="3">7-10</option>
-                              </select>
-                          
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="validatedCustomFile" required>
-                              <label class="custom-file-label" for="validatedCustomFile">Subir Credencial...</label>
-                            </div>
-                          </form>
-                   
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <input id="edad" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Fecha de nacimiento">
+                  </div>
 
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                    <!--<input type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Genero">-->
+                    <select id="genero" class="form-control" aria-describedby="sizing-addon1" placeholder="Genero">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Indefinido">Indefinido</option>
+                    </select>
+                  </div>
 
-                    
-                    <button class="btn btn-primary" type="submit">CONFIRMAR</button>
-                  </form>
+  
                   
-                  <script>
-                  // Example starter JavaScript for disabling form submissions if there are invalid fields
-                  (function() {
-                    'use strict';
-                    window.addEventListener('load', function() {
-                      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                      var forms = document.getElementsByClassName('needs-validation');
-                      // Loop over them and prevent submission
-                      var validation = Array.prototype.filter.call(forms, function(form) {
-                        form.addEventListener('submit', function(event) {
-                          if (form.checkValidity() === false) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                          }
-                          form.classList.add('was-validated');
-                        }, false);
-                      });
-                    }, false);
-                  })();
-                  </script>
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <input id="correo" type="email" class="form-control" aria-describedby="sizing-addon1" placeholder="Direccion de correo">
+                  </div>
 
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
+                    <input id="Comunidad" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Comunidad">
+                  </div>
 
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
+                    <input id="Direccion" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Dirección">
+                  </div>
+
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
+                    <input id="Descrip" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Descripcion del lugar habitación">
+                  </div>
+
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                    <input id="numeroTelefono" type="tel" class="form-control" aria-describedby="sizing-addon1" placeholder="Numero de Telefono">
+                  </div>
+
+                   
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                      <label for="exampleFormControlFile1" class=""  aria-hidden="true">Subir Credencial</label>
+                      <input id="credencial" type="file" class="form-control" aria-describedby="sizing-addon1"  placeholder="">
+                  </div>
+
+                  
+
+                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                    <label for="exampleFormControlFile1" class=""  aria-hidden="true">Subir Comprobante de Domicilio</label>
+                    <input id="ComprobantedeDom" type="file" class="form-control" aria-describedby="sizing-addon1"  placeholder="">
+                  </div>
+
+                
+                  
+  
+                  
+                  <div id="mensajeConfi" class="input-group wow fadeInUp " data-wow-delay="2s">
+                     
+                  </div>
+                  <button id="btnGuardarClientes"  type="submit" class="btn btn-lg wow fadeInUp informate" data-wow-delay="2.4s">Registrar</button>
+                  <div class="col-lg-6 col-md-6 wow bounceInRight">
+                  </div>
+              </div>
+            
+  
+          </div>
+
+          
+        </div>
+        <br>
+        <h2>Clientes Registrados</h2>
+        <p>En esta tabla se encuentran registrados todos los Clientes:</p>                                                                                      
+        <div class="table-responsive">          
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Apellido Paterno</th>
+              <th>Apellido Materno</th>
+              <th>Curp</th>
+              <th>Fecha de Nacimiento</th>
+              <th>Genero</th>
+              <th>E-mail</th>
+              <th>Comunidad</th>
+              <th>Dirección</th>
+              <th>Descripcion de Habitación</th>
+              <th>Telefono</th>
+              <th>Credencial</th>
+              <th>Comprobante de Domicilio</th>
+            </tr>
+          </thead>
+          <tbody id="tablaClientes">
+              <!-- Los datos se llenan con una consulta -->
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+</div>
+ 
+ <!---- fin registro de clente ----->
+
+<div id="footer" class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <h4 class="wow fadeInUp">Nuestro Contacto</h4>
+                <p><i class="fa fa-home" aria-hidden="true"></i> 111 Venustiano Carranza S/N, Huetamo Mich., 61981</p>
+                <p><i class="fa fa-envelope" aria-hidden="true"></i> info@MUEBLERIAESPINOSA.com</p>
+                <p><i class="fa fa-phone" aria-hidden="true"></i> 435 55 635 91</p>
+                <p><i class="fa fa-globe" aria-hidden="true"></i> www.MUEBLERIAESPINOZA.com</p>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <h4>Aprende Más</h4>
+                <p><i class="fa fa-square-o" aria-hidden="true"></i> Nosotros</p>
+                <p><i class="fa fa-square-o" aria-hidden="true"></i> Privacidad</p>
+                <p><i class="fa fa-square-o" aria-hidden="true"></i> Terminos & Condiciones</p>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <h4>Conocenos </h4>
+                <i class="social fa fa-facebook" aria-hidden="true"></i>
+                <i class="social fa fa-twitter" aria-hidden="true"></i>
+               <i class="social fa fa-linkedin" aria-hidden="true"></i>
+               <i class="social fa fa-pinterest" aria-hidden="true"></i>
+               <i class="social fa fa-youtube" aria-hidden="true"></i>
+               <i class="social fa fa-github" aria-hidden="true"></i><br>
+               <input type="email" placeholder="Subscribete e informate"><button class="btn btn-success">Subscribete</button>
             </div>
         </div>
-    
-       
     </div>
-    
-
-
-
-
-
-
-
-
-            
-<br>
+</div>
 
 
 
