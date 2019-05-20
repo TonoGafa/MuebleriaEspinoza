@@ -116,7 +116,7 @@ firebase.initializeApp({
         nombre.focus();
       }
   }
-/
+
     //Editar Vendedores
 
 function EditarCobradores(Id,nombre,apellidoP,apellidoM,curp,usuario,edad,numeroTelefono,correo,genero){

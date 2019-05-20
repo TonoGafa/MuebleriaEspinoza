@@ -95,22 +95,22 @@
 
                   <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
-                    <input id="Comunidad" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Comunidad">
+                    <input id="comudidad" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Comunidad">
                   </div>
 
                   <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
-                    <input id="Direccion" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Dirección">
+                    <input id="direccion" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Dirección">
                   </div>
 
                   <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
-                    <input id="Descrip" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Descripcion del lugar habitación">
+                    <input id="descripcionLugar" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Descripcion del lugar habitación">
                   </div>
 
                   <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                    <input id="numeroTelefono" type="tel" class="form-control" aria-describedby="sizing-addon1" placeholder="Numero de Telefono">
+                    <input required maxlength="10" minlength="10" id="numeroTelefono" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" aria-describedby="sizing-addon1" placeholder="Numero de Telefono">
                   </div>
 
                    
@@ -123,7 +123,7 @@
 
                   <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <label for="exampleFormControlFile1" class=""  aria-hidden="true">Subir Comprobante de Domicilio</label>
-                    <input id="ComprobantedeDom" type="file" class="form-control" aria-describedby="sizing-addon1"  placeholder="">
+                    <input id="ComprobanteDomicilio" type="file" class="form-control" aria-describedby="sizing-addon1"  placeholder="">
                   </div>
 
                 
@@ -133,7 +133,7 @@
                   <div id="mensajeConfi" class="input-group wow fadeInUp " data-wow-delay="2s">
                      
                   </div>
-                  <button id="btnGuardarClientes"  type="submit" class="btn btn-lg wow fadeInUp informate" data-wow-delay="2.4s">Registrar</button>
+                  <button id="btnGuardarClientes" onclick=""  type="submit" class="btn btn-lg wow fadeInUp informate" data-wow-delay="2.4s">Registrar</button>
                   <div class="col-lg-6 col-md-6 wow bounceInRight">
                   </div>
               </div>
