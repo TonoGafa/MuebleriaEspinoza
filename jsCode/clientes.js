@@ -13,39 +13,40 @@ firebase.initializeApp({
 
   var mensaje = document.getElementById('mensajeConfi');
   //Permitir Geolozalizacion
-  function localizacion(posicion){
-    var latitud = document.getElementById('latitud');
-    var longitud = document.getElementById('longitud');
 
-    var latitude = posicion.coords.latitude;
-    var longitude = posicion.coords.longitude;
-
-    latitud.value=latitude;
-    longitud.value=longitude;
-
+  function localizacionCliente(){
+    function localizacion(posicion){
+      var latitud = document.getElementById('latitud');
+      var longitud = document.getElementById('longitud');
+  
+      var latitude = posicion.coords.latitude;
+      var longitude = posicion.coords.longitude;
+  
+      latitud.value=latitude;
+      longitud.value=longitude;
+    }
+      navigator.geolocation.getCurrentPosition(localizacion, function(error){
+        // El segundo parámetro es la función de error
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    // El usuario denegó el permiso para la Geolocalización.
+                    mensaje.innerHTML=`El usuario denegó el permiso para la Geolocalización.`;
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    // La ubicación no está disponible.
+                    mensaje.innerHTML=`La ubicación no está disponible.`;
+                    break;
+                case error.TIMEOUT:
+                    // Se ha excedido el tiempo para obtener la ubicación.
+                    mensaje.innerHTML=`Se ha excedido el tiempo para obtener la ubicación.`;
+                    break;
+                case error.UNKNOWN_ERROR:
+                    // Un error desconocido.
+                    mensaje.innerHTML=`Un error desconocido.`;
+                    break;
+            } 
+        });
   }
-
-    navigator.geolocation.getCurrentPosition(localizacion, function(error){
-      // El segundo parámetro es la función de error
-          switch(error.code) {
-              case error.PERMISSION_DENIED:
-                  // El usuario denegó el permiso para la Geolocalización.
-                  mensaje.innerHTML=`El usuario denegó el permiso para la Geolocalización.`;
-                  break;
-              case error.POSITION_UNAVAILABLE:
-                  // La ubicación no está disponible.
-                  mensaje.innerHTML=`La ubicación no está disponible.`;
-                  break;
-              case error.TIMEOUT:
-                  // Se ha excedido el tiempo para obtener la ubicación.
-                  mensaje.innerHTML=`Se ha excedido el tiempo para obtener la ubicación.`;
-                  break;
-              case error.UNKNOWN_ERROR:
-                  // Un error desconocido.
-                  mensaje.innerHTML=`Un error desconocido.`;
-                  break;
-          } 
-      });
  
   
   //Guardar clientes
@@ -242,6 +243,8 @@ function EditarClientes(Id,Nombre,Apellido_Paterno,Apellido_Materno,Curp,Edad,Ge
       document.getElementById('direccion').value="";
       document.getElementById('descripcionLugar').value="";
       document.getElementById('numeroTelefono').value="";
+      document.getElementById('latitud').value="";
+      document.getElementById('longitud').value="";
     })
     .catch(function(error){
       mensaje.innerHTML=`Algo salio mal.
