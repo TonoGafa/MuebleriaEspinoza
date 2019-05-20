@@ -25,7 +25,7 @@ firebase.initializeApp({
 
       var mensaje = document.getElementById('mensajeConfi');
       
-      if (contrasena==contrasenaVerificar)
+      if (contrasena==contrasenaVerificar && contrasena!=``)
       {
           db.collection("Vendedores").add({
             Curp:curp,
@@ -64,8 +64,13 @@ firebase.initializeApp({
       }
       else
       {
-        mensaje.innerHTML=`Las contraseñas no coinciden, Favor de verificarlas`;
-        mensaje.className="alert alert-info"
+        if (contrasena==``){
+          mensaje.innerHTML=`La contraseña esta vacia`;
+          mensaje.className="alert alert-danger"
+        }else{
+          mensaje.innerHTML=`Las contraseñas del usuario no son iguales`;
+          mensaje.className="alert alert-danger"
+        }
       }
 
   }

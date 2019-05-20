@@ -23,7 +23,7 @@ firebase.initializeApp({
       var correo = document.getElementById('correo').value;
       var genero = document.getElementById('genero').value;
       
-      if (contrasena == contrasenaVerificar) {
+      if ((contrasena == contrasenaVerificar) && (contrasena!=``)) {
         db.collection("Cobradores").add({
           Curp:curp,
           Nombre: nombre,
@@ -55,13 +55,15 @@ firebase.initializeApp({
         console.error("Error adding document: ", error);
       });
       }
-      
       else{
-      document.getElementById('mensajeConfi').innerHTML=`Las contraseñas del usuario no son iguales`;
-      document.getElementById('mensajeConfi').className="alert alert-danger" 
+        if (contrasena==``){
+          document.getElementById('mensajeConfi').innerHTML=`La contraseña esta vacia`;
+          document.getElementById('mensajeConfi').className="alert alert-danger"
+        }else{
+          document.getElementById('mensajeConfi').innerHTML=`Las contraseñas del usuario no son iguales`;
+          document.getElementById('mensajeConfi').className="alert alert-danger"
+        }
       }
-
-
   }
 
 
@@ -69,10 +71,10 @@ firebase.initializeApp({
       
 //Mostrar datos a la tabla
   var tabla = document.getElementById('tablaCobradores');
-  var conteo=0;
+  
   db.collection("Cobradores").onSnapshot((querySnapshot) => {
     tabla.innerHTML=''; 
-
+    var conteo=0;
     querySnapshot.forEach((doc) => {
       conteo=conteo+1;
       console.log(`${doc.id} => ${doc.data()}`);
@@ -128,8 +130,8 @@ function EditarCobradores(Id,nombre,apellidoP,apellidoM,curp,usuario,edad,numero
   document.getElementById('correo').value = correo;
   document.getElementById('genero').value = genero;
   
-  contrasena.innerHTML=`************`;
-  contrasenaVerificar.innerHTML=`************`;
+  contrasena.value=`************`;
+  contrasenaVerificar.value=`************`;
   contrasena.disabled=true;
   contrasenaVerificar.disabled=true;
 
