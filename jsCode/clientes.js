@@ -47,68 +47,144 @@ firebase.initializeApp({
             } 
         });
   }
+
+
+  //Comienza metodo para subir imagenes en FireBase
+var nombreImagenDomicilio;
+var urlImagenDomicilio;
+var nombreImagenesCredencial;
+var urlImagenCredencial;
+
+var storageRef;
+
+  function subirImagenesFireBase(){
+    var comprobanteDomicilio = document.getElementById('comprobanteDomicilio');
+    var credencial = document.getElementById('credencial');
+
+    var imagencomprobanteDomicilio = comprobanteDomicilio.files[0];
+    var imagencredencial = credencial.files[0];
+
+    storageRef = firebase.storage().ref();
+
+    //var uploadDomicilio = storageRef.child('imagenesDomicilio/'+imagencomprobanteDomicilio.name);
+    //var uploadCredencial = storageRef.child('imagenesCredencial/'+imagencredencial.name);
+
+    var uploadTask  = storageRef.child('imagenesDomicilio/'+imagencomprobanteDomicilio.name).put(imagencomprobanteDomicilio);
+    /*var uploadCredencial = storageRef.child('imagenesCredencial/'+imagencredencial.name).put(imagencredencial);*/
+
+    uploadTask.on('state_changed',
+    function (snapshot){
+      alert('subiendo '+snapshot)
+    },
+    function(error){
+      alert('Domicilio '+error)
+      nombreImagenDomicilio=imagencomprobanteDomicilio.name;
+      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        urlImagenDomicilio=downloadURL;
+        console.log('File available at', downloadURL);
+        });
+    },function(){
+      alert('Domicilio subido');
+      nombreImagenDomicilio=imagencomprobanteDomicilio.name;
+      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+      urlImagenDomicilio=downloadURL;
+      console.log('File available at', downloadURL);
+      });
+    });
+
+    /*uploadCredencial.on('state_changed',
+    function(error){
+      alert('Credencial '+error)
+    },function(){
+      alert('Credencial subida');
+      nombreImagenesCredencial=imagencredencial.name;
+      urlImagenCredencial=uploadCredencial.snapshot.downloadURL;
+    });*/
+alert('url '+urlImagenDomicilio)
+  }
+
+  //Termina metodo para subir imagenes en Firebase
  
   
   //Guardar clientes
   function guardarCliente(){
-    var nombre = document.getElementById('nombreCompleto').value;
-    var apellidoP = document.getElementById('apellidoP').value;
-    var apellidoM = document.getElementById('apellidoM').value;
-    var curp = document.getElementById('curp').value;
-    var edad = document.getElementById('edad').value;
-    var genero = document.getElementById('genero').value;
-    var correo = document.getElementById('correo').value;
-    var comunidad = document.getElementById('comudidad').value;
-    var direccion = document.getElementById('direccion').value;
-    var descripcionLugar = document.getElementById('descripcionLugar').value;
-    var numeroTelefono = document.getElementById('numeroTelefono').value;
+try {
+  var nombre = document.getElementById('nombreCompleto').value;
+  var apellidoP = document.getElementById('apellidoP').value;
+  var apellidoM = document.getElementById('apellidoM').value;
+  var curp = document.getElementById('curp').value;
+  var edad = document.getElementById('edad').value;
+  var genero = document.getElementById('genero').value;
+  var correo = document.getElementById('correo').value;
+  var comunidad = document.getElementById('comudidad').value;
+  var direccion = document.getElementById('direccion').value;
+  var descripcionLugar = document.getElementById('descripcionLugar').value;
+  var numeroTelefono = document.getElementById('numeroTelefono').value;
 
-    var latitud = document.getElementById('latitud').value;
-    var longitud = document.getElementById('longitud').value;
 
-    if(latitud!="" || longitud!=""){
-      db.collection("Clientes").add({
-        Nombre: nombre,
-        Apellido_Paterno: apellidoP,
-        Apellido_Materno: apellidoM,
-        Curp: curp,
-        Edad: edad,
-        Genero: genero,
-        Correo: correo,
-        Comunidad: comunidad,
-        Direccion: direccion,
-        Descripcion_Del_Lugar: descripcionLugar,
-        Numero_Telefono: numeroTelefono,
-        Longitud: longitud,
-        Latitud: latitud
-      })
-      .then(function(docRef){
-        console.log("Document written with ID: ", docRef.id);
-        mensaje.innerHTML=`Cliente Guardado`;
-        mensaje.className="alert alert-success"
-        document.getElementById('nombreCompleto').value="";
-        document.getElementById('apellidoP').value="";
-        document.getElementById('apellidoM').value="";
-        document.getElementById('curp').value="";
-        document.getElementById('edad').value="";
-        document.getElementById('genero').value="";
-        document.getElementById('correo').value="";
-        document.getElementById('comudidad').value="";
-        document.getElementById('direccion').value="";
-        document.getElementById('descripcionLugar').value="";
-        document.getElementById('numeroTelefono').value="";
-      })
-      .catch(function(error){
-        console.error("Error adding document: ", error);
-        mensaje.innerHTML=`Ocurrio un error durante el proceso.
-        <br>
-        Favor de verificar si el Cliente se guardo.`;
-        mensaje.className="aler alert-danger"
-      });
-    }else{
-      mensaje.innerHTML=`No se ha generado la ubicacion del cliente`;
+  subirImagenesFireBase();
+
+  var credencial = document.getElementById('credencial');
+  var comprobanteDomicilio = document.getElementById('comprobanteDomicilio');
+  
+var NOMBRE2ImagenFbCredencial =credencial.files[0].name;
+
+  var latitud = document.getElementById('latitud').value;
+  var longitud = document.getElementById('longitud').value;
+
+  if(nombre!=""){
+    db.collection("Clientes").add({
+      Nombre: nombre,
+      Apellido_Paterno: apellidoP,
+      Apellido_Materno: apellidoM,
+      Curp: curp,
+      Edad: edad,
+      Genero: genero,
+      Correo: correo,
+      Comunidad: comunidad,
+      Direccion: direccion,
+      Descripcion_Del_Lugar: descripcionLugar,
+      Numero_Telefono: numeroTelefono,
+      Credencial: NOMBRE2ImagenFbCredencial,
+      Comprobante_De_Domicilio: nombreImagenDomicilio,
+      Longitud: longitud,
+      Latitud: latitud
+    })
+    .then(function(docRef){
+      console.log("Document written with ID: ", docRef.id);
+      mensaje.innerHTML=`Cliente Guardado`;
+      mensaje.className="alert alert-success"
+      document.getElementById('nombreCompleto').value="";
+      document.getElementById('apellidoP').value="";
+      document.getElementById('apellidoM').value="";
+      document.getElementById('curp').value="";
+      document.getElementById('edad').value="";
+      document.getElementById('genero').value="";
+      document.getElementById('correo').value="";
+      document.getElementById('comudidad').value="";
+      document.getElementById('direccion').value="";
+      document.getElementById('descripcionLugar').value="";
+      document.getElementById('numeroTelefono').value="";
+    })
+    .catch(function(error){
+      console.error("Error adding document: ", error);
+      mensaje.innerHTML=`Ocurrio un error durante el proceso.
+      <br>
+      Favor de verificar si el Cliente se guardo.`;
       mensaje.className="aler alert-danger"
-    }
+    });
+  }else{
+    mensaje.innerHTML=`Los campos estan vacios`;
+    mensaje.className="aler alert-danger"
+  }
+
+} catch (error) {
+  mensaje.innerHTML=error
+  alert('Campos vacios '+error)
+}
+
+
+
   }
 
   //Mostrar datos en la tabla Clientes
