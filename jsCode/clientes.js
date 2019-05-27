@@ -99,6 +99,25 @@ var storageRef;
 //alert('url '+urlImagenDomicilio)
   }
   //Termina metodo para subir imagenes en Firebase Domicilio
+
+  //Metodo para eliminar imagen Domicilio de FireBase
+function eliminarImagen_Domicilio_FireBase(){
+  // Se crea la referencia para eliminar la imagen
+  var comprobanteDomicilio = document.getElementById('comprobanteDomicilio');
+  var imagencomprobanteDomicilio = comprobanteDomicilio.files[0];
+  storageRef = firebase.storage().ref();
+var desertRef = storageRef.child('imagenesDomicilio/'+imagencomprobanteDomicilio.name);
+
+// Se elimina la imagen
+desertRef.delete().then(function() {
+  alert('Imagen Eliminada')
+}).catch(function(error) {
+  alert('Ah ocurrido un error <br>'+
+  'Verifique que la imagen haya sido borrada '+'<br>'+error)
+});
+}
+  //Termina metodo para eliminar imagen en Firebase
+
  
 //Comieza metodo para subir imagenes en Firebase Credencial
 function subirImagenen_Credencial_FireBase(){
@@ -125,6 +144,22 @@ function subirImagenen_Credencial_FireBase(){
 }
 //Termina metodo para subir imagenes en firebase Credencial
 
+//Metodo para borrar imagenes en firebase Credencial
+function borrarImagen_Credencial_FireBase(){
+    // Se crea la referencia para borrarla
+    var credencial = document.getElementById('credencial');
+    var imagencredencial = credencial.files[0];
+    storageRef = firebase.storage().ref();
+  var desertRef = storageRef.child('imagenesCredencial/'+imagencredencial.name);
+  // Se elimina la imagen
+  desertRef.delete().then(function() {
+    alert('Credencial Eliminada')
+  }).catch(function(error) {
+    alert('Ah ocurrido un error <br>'+
+    'Verifique que la imagen haya sido borrada '+'<br>'+error)
+  });
+}
+//Termina metodo para borrar imagenes en firebase Credencial
   
   //Guardar clientes
   function guardarCliente(){
