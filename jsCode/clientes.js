@@ -13,7 +13,6 @@ firebase.initializeApp({
 
   var mensaje = document.getElementById('mensajeConfi');
   //Permitir Geolozalizacion
-
   function localizacionCliente(){
     function localizacion(posicion){
       var latitud = document.getElementById('latitud');
@@ -49,21 +48,17 @@ firebase.initializeApp({
   }
 
 
-  //Comienza metodo para subir imagenes en FireBase
-var nombreImagenDomicilio;
-var urlImagenDomicilio;
-var nombreImagenesCredencial;
-var urlImagenCredencial;
+  //Comienza metodo para subir imagenes en FireBase Domicilio
+var nombreImagenDomicilio="";
+var urlImagenDomicilio="";
+var nombreImagenesCredencial="";
+var urlImagenCredencial="";
 
 var storageRef;
 
-  function subirImagenesFireBase(){
+  function subirImagenen_Domicilio_FireBase(){
     var comprobanteDomicilio = document.getElementById('comprobanteDomicilio');
-    var credencial = document.getElementById('credencial');
-
     var imagencomprobanteDomicilio = comprobanteDomicilio.files[0];
-    var imagencredencial = credencial.files[0];
-
     storageRef = firebase.storage().ref();
 
     //var uploadDomicilio = storageRef.child('imagenesDomicilio/'+imagencomprobanteDomicilio.name);
@@ -74,20 +69,21 @@ var storageRef;
 
     uploadTask.on('state_changed',
     function (snapshot){
-      alert('subiendo '+snapshot)
+      alert('subiendo Domicilio'+snapshot)
     },
     function(error){
       alert('Domicilio '+error)
-      nombreImagenDomicilio=imagencomprobanteDomicilio.name;
+      /*nombreImagenDomicilio=imagencomprobanteDomicilio.name;
       uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
         urlImagenDomicilio=downloadURL;
         console.log('File available at', downloadURL);
-        });
+        });*/
     },function(){
       alert('Domicilio subido');
-      nombreImagenDomicilio=imagencomprobanteDomicilio.name;
+      nombreImagenDomicilio=imagencomprobanteDomicilio.name;//Nombre de la imagen
       uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-      urlImagenDomicilio=downloadURL;
+      urlImagenDomicilio=downloadURL;//Url donde esta guardada la imagen
+      alert(downloadURL)
       console.log('File available at', downloadURL);
       });
     });
@@ -100,11 +96,35 @@ var storageRef;
       nombreImagenesCredencial=imagencredencial.name;
       urlImagenCredencial=uploadCredencial.snapshot.downloadURL;
     });*/
-alert('url '+urlImagenDomicilio)
+//alert('url '+urlImagenDomicilio)
   }
-
-  //Termina metodo para subir imagenes en Firebase
+  //Termina metodo para subir imagenes en Firebase Domicilio
  
+//Comieza metodo para subir imagenes en Firebase Credencial
+function subirImagenen_Credencial_FireBase(){
+  var credencial = document.getElementById('credencial');
+  var imagencredencial = credencial.files[0];
+  storageRef = firebase.storage().ref();
+  var uploadTask  = storageRef.child('imagenesCredencial/'+imagencredencial.name).put(imagencredencial);
+
+  uploadTask.on('state_changed',
+  function (snapshot){
+    alert('subiendo Credencial')
+  },
+  function(error){
+    alert('Credencial:  '+error)
+  },function(){
+    alert('Credencial subida');
+    nombreImagenesCredencial=imagencredencial.name;//Nombre de la imagen
+    uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+    urlImagenCredencial=downloadURL;//Url donde esta guardada la imagen
+    alert(downloadURL)
+    console.log('File available at', downloadURL);
+    });
+  });
+}
+//Termina metodo para subir imagenes en firebase Credencial
+
   
   //Guardar clientes
   function guardarCliente(){
@@ -120,14 +140,6 @@ try {
   var direccion = document.getElementById('direccion').value;
   var descripcionLugar = document.getElementById('descripcionLugar').value;
   var numeroTelefono = document.getElementById('numeroTelefono').value;
-
-
-  subirImagenesFireBase();
-
-  var credencial = document.getElementById('credencial');
-  var comprobanteDomicilio = document.getElementById('comprobanteDomicilio');
-  
-var NOMBRE2ImagenFbCredencial =credencial.files[0].name;
 
   var latitud = document.getElementById('latitud').value;
   var longitud = document.getElementById('longitud').value;
@@ -145,8 +157,13 @@ var NOMBRE2ImagenFbCredencial =credencial.files[0].name;
       Direccion: direccion,
       Descripcion_Del_Lugar: descripcionLugar,
       Numero_Telefono: numeroTelefono,
-      Credencial: NOMBRE2ImagenFbCredencial,
+
+      Credencial: nombreImagenesCredencial,
+      UrlDocumentoCredencial: urlImagenCredencial,
+
       Comprobante_De_Domicilio: nombreImagenDomicilio,
+      UrlDocumentoDomicilio: urlImagenDomicilio,
+
       Longitud: longitud,
       Latitud: latitud
     })
@@ -165,6 +182,8 @@ var NOMBRE2ImagenFbCredencial =credencial.files[0].name;
       document.getElementById('direccion').value="";
       document.getElementById('descripcionLugar').value="";
       document.getElementById('numeroTelefono').value="";
+      document.getElementById('latitud').value="";
+      document.getElementById('longitud').value="";
     })
     .catch(function(error){
       console.error("Error adding document: ", error);
