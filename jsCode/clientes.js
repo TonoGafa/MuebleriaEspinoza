@@ -58,6 +58,7 @@ var storageRef;
 
   function subirImagenen_Domicilio_FireBase(){
     var comprobanteDomicilio = document.getElementById('comprobanteDomicilio');
+    var progressDomicilio = document.getElementById('progressDomicilio');
     var imagencomprobanteDomicilio = comprobanteDomicilio.files[0];
     storageRef = firebase.storage().ref();
 
@@ -69,21 +70,22 @@ var storageRef;
 
     uploadTask.on('state_changed',
     function (snapshot){
-      alert('subiendo Domicilio'+snapshot)
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      progressDomicilio.innerHTML=progress+`%`;
+      progressDomicilio.style.width=progress+'%';
     },
     function(error){
-      alert('Domicilio '+error)
+      alert('Error al subir imagen Domicilio '+error)
       /*nombreImagenDomicilio=imagencomprobanteDomicilio.name;
       uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
         urlImagenDomicilio=downloadURL;
         console.log('File available at', downloadURL);
         });*/
     },function(){
-      alert('Domicilio subido');
+      //alert('Domicilio subido');
       nombreImagenDomicilio=imagencomprobanteDomicilio.name;//Nombre de la imagen
       uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
       urlImagenDomicilio=downloadURL;//Url donde esta guardada la imagen
-      alert(downloadURL)
       console.log('File available at', downloadURL);
       });
     });
@@ -122,22 +124,24 @@ desertRef.delete().then(function() {
 //Comieza metodo para subir imagenes en Firebase Credencial
 function subirImagenen_Credencial_FireBase(){
   var credencial = document.getElementById('credencial');
+  var progressCredencial = document.getElementById('progressCredencial');
   var imagencredencial = credencial.files[0];
+
   storageRef = firebase.storage().ref();
   var uploadTask  = storageRef.child('imagenesCredencial/'+imagencredencial.name).put(imagencredencial);
 
   uploadTask.on('state_changed',
   function (snapshot){
-    alert('subiendo Credencial')
+    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+    progressCredencial.innerHTML=progress+`%`;
+    progressCredencial.style.width=progress+'%';
   },
   function(error){
-    alert('Credencial:  '+error)
+    alert('Error al subir imagen Credencial, verifique su conexion a internet:  '+error)
   },function(){
-    alert('Credencial subida');
     nombreImagenesCredencial=imagencredencial.name;//Nombre de la imagen
     uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
     urlImagenCredencial=downloadURL;//Url donde esta guardada la imagen
-    alert(downloadURL)
     console.log('File available at', downloadURL);
     });
   });
@@ -175,6 +179,9 @@ try {
   var direccion = document.getElementById('direccion').value;
   var descripcionLugar = document.getElementById('descripcionLugar').value;
   var numeroTelefono = document.getElementById('numeroTelefono').value;
+
+  subirImagenen_Credencial_FireBase();
+  subirImagenen_Domicilio_FireBase();
 
   var latitud = document.getElementById('latitud').value;
   var longitud = document.getElementById('longitud').value;
@@ -269,7 +276,7 @@ try {
         <th><button>Ver</button></th>
 
         <td>
-        <button class="btn btn-danger" onclick="eliminarClientes('${doc.id}')">Eliminar</button>
+        <button class="btn btn-danger" onclick="eliminarClientes('${doc.id}','${doc.data().Credencial}','${doc.data().Comprobante_De_Domicilio}')">Eliminar</button>
         </td>
         <td>
         <button class="btn btn-warning" onclick="EditarClientes('${doc.id}','${doc.data().Nombre}','${doc.data().Apellido_Paterno}','${doc.data().Apellido_Materno}','${doc.data().Curp}','${doc.data().Edad}','${doc.data().Genero}','${doc.data().Correo}','${doc.data().Comunidad}','${doc.data().Direccion}','${doc.data().Descripcion_Del_Lugar}','${doc.data().Numero_Telefono}')">Modificar</button>
@@ -283,8 +290,9 @@ try {
   });//Termina para mostrar en la tabla
 
   //Eliminar clientes
-  function eliminarClientes(id){
+  function eliminarClientes(id,Credencial,Comprobante_De_Domicilio){
     var opcion = confirm("Desea eliminar al Cliente");
+    storageRef = firebase.storage().ref();
     if(opcion==true){
       db.collection("Clientes").doc(id).delete().then(function(){
         mensaje.innerHTML=`Cliente Eliminado`;
@@ -293,6 +301,23 @@ try {
         mensaje.innerHTML=`Error al eliminar el Cliente`;
         mensaje.className="alert alert-danger"
       })
+
+      var desertRef = storageRef.child('imagenesCredencial/'+Credencial);
+      // Delete the file
+      desertRef.delete().then(function() {
+        // File deleted successfully
+      }).catch(function(error) {
+        // Uh-oh, an error occurred!
+      });
+
+      var desertRef = storageRef.child('imagenesDomicilio/'+Comprobante_De_Domicilio);
+      // Delete the file
+      desertRef.delete().then(function() {
+        // File deleted successfully
+      }).catch(function(error) {
+        // Uh-oh, an error occurred!
+      });
+
     }else{
       nombre.focus();
     }
@@ -302,7 +327,8 @@ try {
 
   //Editar Clientes
 function EditarClientes(Id,Nombre,Apellido_Paterno,Apellido_Materno,Curp,Edad,Genero,
-                        Correo,Comunidad,Direccion,Descripcion_Del_Lugar,Numero_Telefono){
+                        Correo,Comunidad,Direccion,Descripcion_Del_Lugar,Numero_Telefono,
+                        ){
 
   document.getElementById('nombreCompleto').value=Nombre;
   document.getElementById('apellidoP').value=Apellido_Paterno;
