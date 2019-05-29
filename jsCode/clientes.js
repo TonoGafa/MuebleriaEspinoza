@@ -48,7 +48,7 @@ firebase.initializeApp({
   }
 
 
-  //Comienza metodo para subir imagenes en FireBase Domicilio
+  /////////////// Comienza metodo para subir imagenes en FireBase Domicilio ///////////////
 var nombreImagenDomicilio="";
 var urlImagenDomicilio="";
 var nombreImagenesCredencial="";
@@ -56,53 +56,45 @@ var urlImagenCredencial="";
 
 var storageRef;
 
+var cargandoImagenDomicilio=true;
+
+
   function subirImagenen_Domicilio_FireBase(){
     var comprobanteDomicilio = document.getElementById('comprobanteDomicilio');
     var progressDomicilio = document.getElementById('progressDomicilio');
     var imagencomprobanteDomicilio = comprobanteDomicilio.files[0];
     storageRef = firebase.storage().ref();
+//alert(imagencomprobanteDomicilio.name)
+    if(imagencomprobanteDomicilio.name!=""){
+      var uploadTask  = storageRef.child('imagenesDomicilio/'+imagencomprobanteDomicilio.name).put(imagencomprobanteDomicilio);
 
-    //var uploadDomicilio = storageRef.child('imagenesDomicilio/'+imagencomprobanteDomicilio.name);
-    //var uploadCredencial = storageRef.child('imagenesCredencial/'+imagencredencial.name);
-
-    var uploadTask  = storageRef.child('imagenesDomicilio/'+imagencomprobanteDomicilio.name).put(imagencomprobanteDomicilio);
-    /*var uploadCredencial = storageRef.child('imagenesCredencial/'+imagencredencial.name).put(imagencredencial);*/
-
-    uploadTask.on('state_changed',
-    function (snapshot){
-      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      progressDomicilio.innerHTML=progress+`%`;
-      progressDomicilio.style.width=progress+'%';
-    },
-    function(error){
-      alert('Error al subir imagen Domicilio '+error)
-      /*nombreImagenDomicilio=imagencomprobanteDomicilio.name;
-      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-        urlImagenDomicilio=downloadURL;
+      uploadTask.on('state_changed',
+      function (snapshot){
+        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        progressDomicilio.innerHTML=progress+`%`;
+        progressDomicilio.style.width=progress+'%';
+        if(process==100){
+          cargandoImagenDomicilio=false;
+        }
+      },
+      function(error){
+        alert('Error al subir imagen Domicilio '+error)
+      },function(){
+        nombreImagenDomicilio=imagencomprobanteDomicilio.name;//Nombre de la imagen
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        urlImagenDomicilio=downloadURL;//Url donde esta guardada la imagen
         console.log('File available at', downloadURL);
-        });*/
-    },function(){
-      //alert('Domicilio subido');
-      nombreImagenDomicilio=imagencomprobanteDomicilio.name;//Nombre de la imagen
-      uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-      urlImagenDomicilio=downloadURL;//Url donde esta guardada la imagen
-      console.log('File available at', downloadURL);
+        cargandoImagenDomicilio=false;
+        });
       });
-    });
-
-    /*uploadCredencial.on('state_changed',
-    function(error){
-      alert('Credencial '+error)
-    },function(){
-      alert('Credencial subida');
-      nombreImagenesCredencial=imagencredencial.name;
-      urlImagenCredencial=uploadCredencial.snapshot.downloadURL;
-    });*/
-//alert('url '+urlImagenDomicilio)
+  }else{
+    cargandoImagenDomicilio=false;
+    nombreImagenDomicilio = "No Imagen";
+    urlImagenDomicilio = "No Imagen"
   }
-  //Termina metodo para subir imagenes en Firebase Domicilio
+}///////////////// Termina metodo para subir imagenes en Firebase Domicilio ///////////////
 
-  //Metodo para eliminar imagen Domicilio de FireBase
+/////////////// Metodo para eliminar imagen Domicilio de FireBase ///////////////
 function eliminarImagen_Domicilio_FireBase(){
   // Se crea la referencia para eliminar la imagen
   var comprobanteDomicilio = document.getElementById('comprobanteDomicilio');
@@ -117,38 +109,52 @@ desertRef.delete().then(function() {
   alert('Ah ocurrido un error <br>'+
   'Verifique que la imagen haya sido borrada '+'<br>'+error)
 });
-}
-  //Termina metodo para eliminar imagen en Firebase
+}///////////////// Termina metodo para eliminar imagen en Firebase ///////////////
 
- 
-//Comieza metodo para subir imagenes en Firebase Credencial
+ var cargandoImagenCredencial=true;
+ var progress;
+/////////////// Comieza metodo para subir imagenes en Firebase Credencial ///////////////
 function subirImagenen_Credencial_FireBase(){
   var credencial = document.getElementById('credencial');
   var progressCredencial = document.getElementById('progressCredencial');
   var imagencredencial = credencial.files[0];
 
-  storageRef = firebase.storage().ref();
-  var uploadTask  = storageRef.child('imagenesCredencial/'+imagencredencial.name).put(imagencredencial);
+    if(imagencredencial.name!=""){
+      storageRef = firebase.storage().ref();
+      var uploadTask  = storageRef.child('imagenesCredencial/'+imagencredencial.name).put(imagencredencial);
 
-  uploadTask.on('state_changed',
-  function (snapshot){
-    var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    progressCredencial.innerHTML=progress+`%`;
-    progressCredencial.style.width=progress+'%';
-  },
-  function(error){
-    alert('Error al subir imagen Credencial, verifique su conexion a internet:  '+error)
-  },function(){
-    nombreImagenesCredencial=imagencredencial.name;//Nombre de la imagen
-    uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-    urlImagenCredencial=downloadURL;//Url donde esta guardada la imagen
-    console.log('File available at', downloadURL);
-    });
-  });
-}
-//Termina metodo para subir imagenes en firebase Credencial
 
-//Metodo para borrar imagenes en firebase Credencial
+      uploadTask.on('state_changed',
+      function (snapshot){
+        progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        progressCredencial.innerHTML=progress+`%`;
+        progressCredencial.style.width=progress+'%';
+        if(progress==100){
+        cargandoImagenCredencial=false;
+        }else{
+        cargandoImagenCredencial=true;
+        }
+
+      },
+      function(error){
+        alert('Error al subir imagen Credencial, verifique su conexion a internet:  '+error)
+      },function(){
+        nombreImagenesCredencial=imagencredencial.name;//Nombre de la imagen
+        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+        urlImagenCredencial=downloadURL;//Url donde esta guardada la imagen
+        cargandoImagenCredencial=false;
+        console.log('File available at', downloadURL);
+        });
+      });
+  }
+    else{
+      cargandoImagenCredencial=false;
+      nombreImagenesCredencial = "No Imagen";
+      urlImagenCredencial = "No Imagen";
+    }
+}///////////////Termina metodo para subir imagenes en firebase Credencial///////////////
+
+/////////////// Metodo para borrar imagenes en firebase Credencial ///////////////
 function borrarImagen_Credencial_FireBase(){
     // Se crea la referencia para borrarla
     var credencial = document.getElementById('credencial');
@@ -165,7 +171,7 @@ function borrarImagen_Credencial_FireBase(){
 }
 //Termina metodo para borrar imagenes en firebase Credencial
   
-  //Guardar clientes
+  /////////////// Guardar clientes ///////////////
   function guardarCliente(){
 try {
   var nombre = document.getElementById('nombreCompleto').value;
@@ -180,12 +186,19 @@ try {
   var descripcionLugar = document.getElementById('descripcionLugar').value;
   var numeroTelefono = document.getElementById('numeroTelefono').value;
 
-  subirImagenen_Credencial_FireBase();
-  subirImagenen_Domicilio_FireBase();
 
   var latitud = document.getElementById('latitud').value;
   var longitud = document.getElementById('longitud').value;
 
+  //subirImagenen_Credencial_FireBase();
+
+  if(cargandoImagenCredencial==true || cargandoImagenDomicilio==true ){
+      alert('Espere que cargen los archivos')
+  subirImagenen_Credencial_FireBase();
+  subirImagenen_Domicilio_FireBase();
+      //subirImagenen_Credencial_FireBase()
+  }else {
+    
   if(nombre!=""){
     db.collection("Clientes").add({
       Nombre: nombre,
@@ -226,6 +239,7 @@ try {
       document.getElementById('numeroTelefono').value="";
       document.getElementById('latitud').value="";
       document.getElementById('longitud').value="";
+      cargandoImagenCredencial=true;
     })
     .catch(function(error){
       console.error("Error adding document: ", error);
@@ -238,7 +252,7 @@ try {
     mensaje.innerHTML=`Los campos estan vacios`;
     mensaje.className="aler alert-danger"
   }
-
+}
 } catch (error) {
   mensaje.innerHTML=error
   alert('Campos vacios '+error)
@@ -248,7 +262,7 @@ try {
 
   }
 
-  //Mostrar datos en la tabla Clientes
+  /////////////// Mostrar datos en la tabla Clientes ///////////////
   var tabla = document.getElementById('tablaClientes');
 
   db.collection("Clientes").onSnapshot((querySnapshot)=>{
@@ -272,8 +286,8 @@ try {
         <th scope="row">`+doc.data().Direccion+`</th>
         <th scope="row">`+doc.data().Descripcion_Del_Lugar+`</th>
         <th scope="row">`+doc.data().Numero_Telefono+`</th>
-        <th><button class="">Ver</button></th>
-        <th><button>Ver</button></th>
+        <th><button class="btn btn-primary" onclick="mostrarImagen_Firebase_Crencial('${doc.data().UrlDocumentoCredencial}')" >Ver</button></th>
+        <th><button class="btn btn-primary" onclick="mostrarImagen_Firebase_Domicilio('${doc.data().UrlDocumentoDomicilio}')" >Ver</button></th>
 
         <td>
         <button class="btn btn-danger" onclick="eliminarClientes('${doc.id}','${doc.data().Credencial}','${doc.data().Comprobante_De_Domicilio}')">Eliminar</button>
@@ -287,10 +301,10 @@ try {
       </tr>
       `
     });
-  });//Termina para mostrar en la tabla
+  });///////////////Termina para mostrar en la tabla///////////////
 
-  //Eliminar clientes
-  function eliminarClientes(id,Credencial,Comprobante_De_Domicilio){
+  /////////////// Eliminar clientes ///////////////
+  function eliminarClientes(id, Credencial, Comprobante_De_Domicilio){
     var opcion = confirm("Desea eliminar al Cliente");
     storageRef = firebase.storage().ref();
     if(opcion==true){
@@ -322,10 +336,10 @@ try {
       nombre.focus();
     }
   }
-//Termina eliminar clientes
+/////////////// Termina eliminar clientes ///////////////
 
 
-  //Editar Clientes
+  /////////////// Editar Clientes ///////////////
 function EditarClientes(Id,Nombre,Apellido_Paterno,Apellido_Materno,Curp,Edad,Genero,
                         Correo,Comunidad,Direccion,Descripcion_Del_Lugar,Numero_Telefono,
                         ){
@@ -412,5 +426,24 @@ function EditarClientes(Id,Nombre,Apellido_Paterno,Apellido_Materno,Curp,Edad,Ge
   }
 
 }
-  //Terminia para Editar Clientes
+/////////////// Terminia para Editar Clientes ///////////////
 
+/////////////// Metodo para mostrar imagen Credencial /////////////////////
+//var imagenes_Cargadas_Firebase = document.getElementById('imagenes_Cargadas_Firebase');
+var imagenes2Cargadas = document.getElementById('imagenes2Cargadas');
+function mostrarImagen_Firebase_Crencial(UrlDocumentoCredencial){
+ // alert(UrlDocumentoCredencial);
+  //imagenes_Cargadas_Firebase.src=UrlDocumentoCredencial;
+  imagenes2Cargadas.src=UrlDocumentoCredencial
+}
+
+/////////////// Termina Metodo para mostrar imagen Credencial ///////////////
+
+/////////////// Metodo para mostrar Imagen Domicilio ///////////////
+function mostrarImagen_Firebase_Domicilio(UrlDocumentoDomicilio){
+  //alert(UrlDocumentoDomicilio);
+  //imagenes_Cargadas_Firebase.src=UrlDocumentoDomicilio;
+  imagenes2Cargadas.src=UrlDocumentoDomicilio
+
+}
+/////////////// Termina metodo para mostrar imagen ///////////////
