@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/animate.min.css">
 
+    <script src="js/jquery.min.js"></script>
+
             <!-- FireStore -->
             <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
             <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
@@ -125,7 +127,11 @@
         </div>
         <br>
         <h2>Cobradores Registrados</h2>
-        <p>En esta tabla se encuentran registrados todos los Cobradores:</p>                                                                                      
+        <h4>En esta tabla se encuentran registrados todos los Cobradores:</h4>   
+      
+        <br>
+        <input style="width: 30%; " class="form-control" id="myInput" type="text" placeholder="Buscar..."> 
+                                                                                           
         <div class="table-responsive">          
         <table class="table">
           <thead>
@@ -188,7 +194,16 @@
 
 
 
-
+<script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#tablaCobradores tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
 
 
 <script src="jsCode/cobradores.js"></script>
