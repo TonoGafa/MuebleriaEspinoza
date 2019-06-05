@@ -68,16 +68,16 @@
 
 <div id="contact" class="contact">
     <div class="container">
-        <form class="row">
+        <div class="row">
             <h2 class="wow fadeInUp">INVENTARIO REGISTAR NUEVOS PRODUCTOS</h2>
             <div class="col-lg-6 col-md-6">
                 <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <input required id="nombre_Producto" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Nombe del producto"/>
+                    <input id="nombre_Producto" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Nombe del producto"/>
                 </div>
                 <div class="input-group input-group-lg shadow-textarea wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-book" aria-hidden="true"></i></span>
-                    <textarea required id="descripcion_Producto" type="text" class="form-control z-depth-1" rows="2" placeholder="Descripción"></textarea>
+                    <textarea id="descripcion_Producto" type="text" class="form-control z-depth-1" rows="2" placeholder="Descripción"></textarea>
                 </div>
                 <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-eyedropper" aria-hidden="true"></i></span>
@@ -90,11 +90,11 @@
                 </div>
                 <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                    <input required id="fecha_Registro" type="date" class="form-control" aria-describedby="sizing-addon1">
+                    <input id="fecha_Registro" type="date" class="form-control" aria-describedby="sizing-addon1">
                 </div>
                 <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-asterisk" aria-hidden="true"></i></span>
-                    <input required id="cantidad_Producto" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Cantidad">
+                    <input id="cantidad_Producto" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Cantidad">
                 </div>
                 <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-bars" aria-hidden="true"></i></span>
@@ -109,13 +109,13 @@
 
                 <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
-                    <input required id="precio_Venta" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Venta">
+                    <input id="precio_Venta" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Venta">
                 </div>
                 <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
-                    <input required id="precio_Compra" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Compra">
+                    <input id="precio_Compra" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Compra">
                 </div>
-                <div class="input-group wow fadeInUp" data-wow-delay="2s">
+                <div id="mensajeResultados"class="input-group wow fadeInUp" data-wow-delay="2s">
                    
                 </div>
             </div>
@@ -147,11 +147,11 @@
                              </div> -->
 
             <br>
-            <button onclick="guardar_Productos()" type="submit" class="btn btn-lg  fadeInUp" data-wow-delay="2.4s">Registrar</button>
+            <button onclick="guardar_Productos()" id="btnInventario" class="btn btn-lg  fadeInUp" data-wow-delay="2.4s">Registrar</button>
 
 
             
-          </form>
+                            </div>
         <br>
         <h2>Productos registrados </h2>
         <h4>En esta tabla se encuentran registrados todos los productos en el inventario:</h4>                                                                                      
@@ -160,9 +160,14 @@
           <thead>
             <tr class="bg-primary">
               <th>#</th>
-              <th>Nombre</th>
-              <th>Tipo Producto</th>
-              <th>Descripción</th>
+              <th>Nombre Producto</th>
+              <th>Descripción Producto</th>
+              <th>Cantidad</th>
+              <th>Tipo</th>
+              <th>Precio Venta</th>
+              <th>Precio Compra</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody id="tablaInventario">
