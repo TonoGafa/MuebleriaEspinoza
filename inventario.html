@@ -87,7 +87,15 @@
                 <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-photo" aria-hidden="true"></i></span>
                     <input id="imagen_Producto" type="file" class="form-control" aria-describedby="sizing-addon1" placeholder="Imagen">
+                    <span onclick="subirImagenen_Producto_FireBase()" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></i></span>
                 </div>
+
+                <div class="progress wow fadeInUp" data-wow-delay="0.8s">
+                    <div id="progressProducto" class="progress-bar progress-bar-striped active" role="progressbar"
+                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    </div>
+                  </div>
+
                 <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                     <input id="fecha_Registro" type="date" class="form-control" aria-describedby="sizing-addon1">
@@ -96,7 +104,7 @@
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-asterisk" aria-hidden="true"></i></span>
                     <input id="cantidad_Producto" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Cantidad">
                 </div>
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
+                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-bars" aria-hidden="true"></i></span>
                     <select id="tipo_Producto" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Tipo">
                       <option value="NoTipo">Seleccionar tipo...</option>
@@ -107,17 +115,23 @@
                     </select>
                 </div>
 
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
+                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
                     <input id="precio_Venta" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Venta">
                 </div>
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
+                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                     <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
                     <input id="precio_Compra" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Compra">
                 </div>
                 <div id="mensajeResultados"class="input-group wow fadeInUp" data-wow-delay="2s">
                    
                 </div>
+            </div>
+            <div id="controlesImagenes" style="display: none" class="col-md-6">
+                <img src="" alt="">
+                <span onclick="" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i></span>
+                <span onclick="" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></i></span>
+                <span onclick="" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></span>
             </div>
             <br>
 
@@ -151,7 +165,7 @@
 
 
             
-                            </div>
+    </div>
         <br>
         <h2>Productos registrados </h2>
         <h4>En esta tabla se encuentran registrados todos los productos en el inventario:</h4>                                                                                      
@@ -163,6 +177,7 @@
               <th>Nombre Producto</th>
               <th>Descripción Producto</th>
               <th>Cantidad</th>
+              <th>Nombre Imagen</th>
               <th>Tipo</th>
               <th>Precio Venta</th>
               <th>Precio Compra</th>
