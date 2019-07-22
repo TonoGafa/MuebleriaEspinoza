@@ -1,44 +1,77 @@
+body,
+html {
+    height: 100%;
+}
+
 body {
-  background: #333;
-  color: #fff; }
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(rgba(189, 140, 95, 0.8), rgba(234, 98, 35, 0.7)), url("../images/sala.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* No Scrollbar */
+    overflow: hidden;
+}
 
-.navbar {
-  border-bottom: #008ed6 3px solid;
-  opacity: 0.8; }
+.form-box {
+    width: 300px;
+    padding: 40px;
+    background: #054c4ebd;
+    text-align: center;
+    border-radius: 20px;
+}
 
-#home-section {
-  background: url("../img/home.jpg") no-repeat;
-  min-height: 700px;
-  background-size: cover;
-  background-attachment: fixed; }
-  #home-section .dark-overlay {
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    min-height: 700px; }
-  #home-section .home-inner {
-    padding-top: 150px; }
-  #home-section .card-form {
-    opacity: 0.8; }
-  #home-section .fa {
-    color: #008ed6;
-    background: #fff;
-    padding: 4px;
-    border-radius: 5px;
-    font-size: 30px; }
+.form-title {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+}
 
-#explore-section .fa, #share-section .fa {
-  color: #fff;
-  background: #333;
-  padding: 4px;
-  border-radius: 5px;
-  font-size: 30px; }
+.form-box input[type="text"],
+.form-box input[type="password"],
+.form-box button[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3742fa;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
 
-#create-section .fa {
-  color: #008ed6;
-  background: #fff;
-  padding: 4px;
-  border-radius: 5px;
-  font-size: 30px; }
+.form-box input[type="text"]:focus,
+.form-box input[type="password"]:focus {
+    width: 280px;
+    border-color: #ffffff;
+}
+
+.form-box button[type="submit"] {
+    border: 0;
+    background: #5352ed;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3742fa;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.form-box button[type="submit"]:hover {
+    background: none;
+}

@@ -1,5 +1,4 @@
 * {
-
     padding: 0;
     margin: 0;
 }
@@ -12,23 +11,19 @@ body {
 }
 
 li {
-
     list-style: none;
     display: inline-block
 }
 
 a {
-
     text-decoration: none;
     transition: all 500ms ease-in-out;
 }
 
 a:hover,
 a:active {
-
     text-decoration: none;
 }
-
 
 h2,
 h4 {
@@ -43,21 +38,18 @@ p {
 }
 
 .btn {
-
     transition: all 300ms ease-in-out;
     font-weight: 500 !important;
     text-transform: uppercase;
 }
 
 .btn:hover {
-
-    background-color: #9e0909 ;
+    background-color: #9e0909;
     color: orange;
 }
 
 
 /*NAVIGATION*/
-
 
 .navbar {
     text-align: center;
@@ -67,28 +59,21 @@ p {
     font-size: 15px;
 }
 
-
 .navbar a {
-    
-    color:#222222 !important;
+    color: #222222 !important;
     opacity: 0.7;
     font-style: initial;
-    
 }
 
-
 .navbar a:hover {
-    
     opacity: 1;
     background-color: orange !important;
 }
 
 
-
 /*HEADER*/
 
 .header {
-    
     height: 600px;
     width: 100%;
     padding: 30px 0 30px;
@@ -100,65 +85,48 @@ p {
     color: rgb(200, 216, 219);
 }
 
-
 .header img {
-    
     height: 200px;
     width: 450px;
     margin: 80px 0 0 80px;
 }
 
 .header h1 {
-    
     font-size: 40px;
     font-weight: 700;
     padding-top: 30px;
     font-family: 'Montserrat', sans-serif;
-    
 }
 
 .header h1,
 .header p,
 .header button {
-    
     margin-top: 20px;
 }
 
 .header .btn {
-    
     border-radius: 0;
     margin: 40px 20px;
 }
 
-
 @media(max-width:768px) {
-    
     .header {
-        
         padding: 30px;
         height: 750px;
     }
-    
     .header img {
-        
         width: 90%;
         height: 300px;
         margin: 20px 0 0 20px;
     }
-    
     .header .btn {
-        
         font-size: 10px;
         margin-left: 20px;
     }
-    
     .header h1 {
-        
         font-size: 20px;
     }
-    
     .header p {
-        
         font-size: 10px;
     }
 }
@@ -167,29 +135,23 @@ p {
 /*SERVICES*/
 
 .services {
-    
     padding: 80px 0 80px;
     text-align: center;
 }
 
 .services h2,
 .services h4 {
-    
     color: #4c4c4c;
     margin: 20px 0 20px;
 }
 
-
 .services p {
-    
     color: #737373;
     font-size: 14px;
     padding-bottom: 40px;
 }
 
-
 .services i {
-    
     height: 80px;
     width: 80px;
     font-size: 30px;
@@ -199,11 +161,8 @@ p {
     color: #fff;
 }
 
-
 @media(max-width:768px) {
-    
     .services {
-        
         padding: 30px;
     }
 }
@@ -212,7 +171,6 @@ p {
 /*PRICING*/
 
 .pricing {
-    
     padding: 50px 0 80px;
     text-align: center;
     background-color: sienna;
@@ -220,17 +178,14 @@ p {
 
 .pricing h2,
 .pricing p {
-    
     color: #fff;
 }
 
 .pricing p {
-    
     padding-bottom: 40px;
 }
 
 .pricing .packages {
-    
     padding: 30px;
     border: 1px solid #ccc;
     background-color: #fff;
@@ -241,16 +196,15 @@ p {
 .parallax {
     height: 30vw;
     background-image: url(../images/);
-    background-position:center;
-    background-repeat:no-repeat;
-    background-attachment:fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: lightseagreen;
     display: flex;
-    align-items:center;  
+    align-items: center;
 }
 
 .packages li {
-    
     display: block;
     padding: 5px;
 }
@@ -258,32 +212,23 @@ p {
 .packages h4,
 .packages h1,
 .packages b {
-    
     color: #4c4c4c;
 }
 
 .packages p,
 .packages li {
-    
     color: #737373;
 }
 
 .packages button {
-    
     margin-top: 10px;
 }
 
-
-
 @media(max-width:768px) {
-    
     .pricing {
-        
         padding: 30px;
     }
-    
     .packages {
-        
         width: 80%;
         margin-left: 25px;
     }
@@ -293,36 +238,28 @@ p {
 /*TEAM*/
 
 .team {
-    
     padding: 50px 0 80px;
     text-align: center;
-    
 }
 
 .team b,
 .team h2,
 .team h4 {
-    
     margin: 20px 0 20px;
     color: #4c4c4c;
 }
 
-
 .team p {
-    
     color: #737373;
 }
 
 .team img {
-    
     height: 150px;
     width: 150px;
     margin-top: 80px;
 }
 
-
 .team i {
-    
     height: 30px;
     width: 30px;
     padding: 5px;
@@ -333,7 +270,6 @@ p {
 }
 
 .team a:hover i {
-    
     background-color: #709963;
 }
 
@@ -341,25 +277,21 @@ p {
 /*CLINTS*/
 
 .clients {
-    
     padding: 50px 0 80px;
-    background-color:sienna;
+    background-color: sienna;
     text-align: center;
     color: #fff;
 }
 
 .client h2 {
-    
     color: #5e5e5e;
 }
 
 .clients p {
-    
     padding-bottom: 40px;
 }
 
 .clients img {
-    
     width: 200px;
     opacity: 0.6;
     cursor: pointer;
@@ -367,9 +299,7 @@ p {
     transition: all 500ms ease-in-out;
 }
 
-
 .clients li:hover img {
-    
     opacity: 1;
 }
 
@@ -377,7 +307,6 @@ p {
 /*CONTACT*/
 
 .contact {
-    
     padding: 50px 0 20px;
     text-align: center;
 }
@@ -388,7 +317,6 @@ p {
 }
 
 .contact h2 {
-    
     color: #4c4c4c;
     margin: 20px 0 20px;
 }
@@ -398,18 +326,20 @@ p {
 }
 
 .contact .form-control {
-
-    border-radius: 0 !important;
+    border-radius: 3px !important;
 }
 
 .contact span {
-    align-content:center; 
+    align-content: center;
+    border-radius: 3px !important;
+}
 
-    border-radius: 0 !important;
+.contact .span:hover {
+    background-color: #a85959 !important;
+    color: #fff !important;
 }
 
 .contact .btn {
-    
     border-radius: 0;
     width: 100%;
     font-size: 15px;
@@ -418,30 +348,26 @@ p {
 }
 
 .contact .btn:hover {
-    
     background-color: #a85959 !important;
     color: #fff !important;
 }
 
 .contact img {
-    
     height: 200px;
     width: 450px;
     margin: 50px 0 0 50px;
 }
 
+
 /*FOOTER*/
 
 .footer {
-    
     padding: 30px;
     color: #cccccc;
     background-color: #284f83;
 }
 
-
 .footer .social {
-    
     font-size: 20px;
     height: 30px;
     width: 30px;
@@ -452,9 +378,7 @@ p {
     margin-right: 5px;
 }
 
-
 .footer input {
-    
     height: 40px;
     width: 160px;
     padding: 10px;
@@ -464,71 +388,6 @@ p {
 }
 
 .footer .btn {
-    
     padding: 10px 5px 10px;
     margin: -3px 0 0 5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

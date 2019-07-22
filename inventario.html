@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,29 +12,29 @@
     <link rel="stylesheet" href="css/animate.min.css">
 
 
-        <!-- FireStore -->
-        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    <!-- FireStore -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<style>
-
-.shadow-textarea textarea.form-control::placeholder {
-    font-weight: 300;
-}
-.shadow-textarea textarea.form-control {
-    padding-left: 0.8rem;
-}
-
-</style>
+    <style>
+        .shadow-textarea textarea.form-control::placeholder {
+            font-weight: 300;
+        }
+        
+        .shadow-textarea textarea.form-control {
+            padding-left: 0.8rem;
+        }
+    </style>
 
 </head>
+
 <body>
-    
+
 
     <div id="myNavbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -43,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
+
                 <a href="index.html" class="navbar-brand">MUEBLERIA</a>
             </div>
             <div class="navbar-collapse collapse">
@@ -54,7 +55,7 @@
                     <li><a href="#">INVENTARIO</a></li>
                     <li><a href="clientes.html">CLIENTES</a></li>
                     <li><a href="catalogo.html">CATALAGO</a></li>
-                   
+
                 </ul>
             </div>
         </div>
@@ -62,80 +63,86 @@
     <br>
 
 
-    <!-- <--> 
+    <!-- <-->
 
-<!--- Contacto ------>
+    <!--- tabla de registro ------>
 
-<div id="contact" class="contact">
-    <div class="container">
-        <div class="row">
-            <h2 class="wow fadeInUp">INVENTARIO REGISTAR NUEVOS PRODUCTOS</h2>
-            <div class="col-lg-6 col-md-6">
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <input id="nombre_Producto" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Nombe del producto"/>
-                </div>
-                <div class="input-group input-group-lg shadow-textarea wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-book" aria-hidden="true"></i></span>
-                    <textarea id="descripcion_Producto" type="text" class="form-control z-depth-1" rows="2" placeholder="Descripción"></textarea>
-                </div>
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-eyedropper" aria-hidden="true"></i></span>
-                    <input id="color" type="color" class="form-control" aria-describedby="sizing-addon1" placeholder="Color">
-                </div>
-                
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-photo" aria-hidden="true"></i></span>
-                    <input id="imagen_Producto" type="file" class="form-control" aria-describedby="sizing-addon1" placeholder="Imagen">
-                    <span onclick="subirImagenen_Producto_FireBase()" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></i></span>
-                </div>
-
-                <div class="progress wow fadeInUp" data-wow-delay="0.8s">
-                    <div id="progressProducto" class="progress-bar progress-bar-striped active" role="progressbar"
-                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+    <div id="contact" class="contact">
+        <div class="container">
+            <div class="row">
+                <h2 class="wow fadeInUp">INVENTARIO REGISTAR NUEVOS PRODUCTOS</h2>
+                <div class="col-lg-6 col-md-6">
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-wpbeginner" aria-hidden="true"></i></span>
+                        <input id="nombre_Producto" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Nombe del producto" />
                     </div>
-                  </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-barcode" aria-hidden="true"></i></span>
+                        <input id="nombre_Producto" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Clave del producto" />
+                    </div>
 
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                    <input id="fecha_Registro" type="date" class="form-control" aria-describedby="sizing-addon1">
-                </div>
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-asterisk" aria-hidden="true"></i></span>
-                    <input id="cantidad_Producto" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Cantidad">
-                </div>
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-bars" aria-hidden="true"></i></span>
-                    <select id="tipo_Producto" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Tipo">
+                    <div class="input-group input-group-lg shadow-textarea wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-book" aria-hidden="true"></i></span>
+                        <textarea id="descripcion_Producto" type="text" class="form-control z-depth-1" rows="2" placeholder="Descripción"></textarea>
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-eyedropper" aria-hidden="true"></i></span>
+                        <input id="color" type="color" class="form-control" aria-describedby="sizing-addon1" placeholder="Color">
+                    </div>
+
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-photo" aria-hidden="true"></i></span>
+                        <input id="imagen_Producto" type="file" class="form-control" aria-describedby="sizing-addon1" placeholder="Imagen">
+                        <span onclick="subirImagenen_Producto_FireBase()" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-cloud-upload" ></i></span>
+                    </div>
+
+                    <div class="progress wow fadeInUp" data-wow-delay="0.8s">
+                        <div id="progressProducto" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                        </div>
+                    </div>
+
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                        <input id="fecha_Registro" type="date" class="form-control" aria-describedby="sizing-addon1">
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-asterisk" aria-hidden="true"></i></span>
+                        <input id="cantidad_Producto" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Cantidad">
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-bars" aria-hidden="true"></i></span>
+                        <select id="tipo_Producto" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Tipo">
                       <option value="NoTipo">Seleccionar tipo...</option>
                       <option value="LINEA BLANCA">LINEA BLANCA</option>
                       <option value="COLCHONES">COLCHONES</option>
                       <option value="MUEBLES DE MADERA">MUEBLES DE MADERA</option>
                       <option value="CAMAS">CAMAS</option>
+                      <option value="CAMAS">Electronica</option>
+                      
                     </select>
-                </div>
+                    </div>
 
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
-                    <input id="precio_Venta" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Venta">
-                </div>
-                <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
-                    <input id="precio_Compra" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Compra">
-                </div>
-                <div id="mensajeResultados"class="input-group wow fadeInUp" data-wow-delay="2s">
-                   
-                </div>
-            </div>
-            <div id="controlesImagenes" style="display: none" class="col-md-6">
-                <img src="" alt="">
-                <span onclick="" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i></span>
-                <span onclick="" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></i></span>
-                <span onclick="" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></span>
-            </div>
-            <br>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
+                        <input id="precio_Venta" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Venta de Contado">
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
+                        <input id="precio_Compra" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Compra">
+                    </div>
+                    <div id="mensajeResultados" class="input-group wow fadeInUp" data-wow-delay="2s">
 
-<!-- <div class="form-check">
+                    </div>
+                </div>
+                <div id="controlesImagenes" style="display: none" class="col-md-6">
+                    <img src="" alt="">
+                    <span onclick="" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-remove-sign" aria-hidden="true"></i></span>
+                    <span onclick="" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></i></span>
+                    <span onclick="" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-fullscreen" aria-hidden="true"></i></span>
+                </div>
+                <br>
+
+                <!-- <div class="form-check">
                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
                                <label class="form-check-label" for="exampleRadios1">
                                  LINEA BLANCA
@@ -160,90 +167,91 @@
                                     </label>
                              </div> -->
 
+                <br>
+                <button onclick="guardar_Productos()" id="btnInventario" class="btn btn-lg  fadeInUp" data-wow-delay="2.4s">Registrar</button>
+
+
+
+            </div>
             <br>
-            <button onclick="guardar_Productos()" id="btnInventario" class="btn btn-lg  fadeInUp" data-wow-delay="2.4s">Registrar</button>
-
-
-            
-    </div>
-        <br>
-        <h2>Productos registrados </h2>
-        <h4>En esta tabla se encuentran registrados todos los productos en el inventario:</h4>                                                                                      
-        <div class="table-responsive ">          
-        <table class="table">
-          <thead>
-            <tr class="bg-primary">
-              <th>#</th>
-              <th>Nombre Producto</th>
-              <th>Descripción Producto</th>
-              <th>Cantidad</th>
-              <th>Nombre Imagen</th>
-              <th>Tipo</th>
-              <th>Precio Venta</th>
-              <th>Precio Compra</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="tablaInventario">
-<!--Se llenan don una Desde FireBase-->
-          </tbody>
-        </table>
-        </div>
-      </div>
-    </div>
-</div>
- 
- <!---- fin Contacto ----->
-
-
-
-
-
-<div id="footer" class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4">
-                <h4 class="wow fadeInUp">Nuestro Contacto</h4>
-                <p><i class="fa fa-home" aria-hidden="true"></i> 111 Venustiano Carranza S/N, Huetamo Mich., 61981</p>
-                <p><i class="fa fa-envelope" aria-hidden="true"></i> info@MUEBLERIAESPINOSA.com</p>
-                <p><i class="fa fa-phone" aria-hidden="true"></i> 435 55 635 91</p>
-                <p><i class="fa fa-globe" aria-hidden="true"></i> www.MUEBLERIAESPINOSA.com</p>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <h4>Aprende Más</h4>
-                <p><i class="fa fa-square-o" aria-hidden="true"></i> Nosotros</p>
-                <p><i class="fa fa-square-o" aria-hidden="true"></i> Privacidad</p>
-                <p><i class="fa fa-square-o" aria-hidden="true"></i> Terminos & Condiciones</p>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <h4>Conocenos </h4>
-                <i class="social fa fa-home" aria-hidden="true"></i>
-                <i class="social fa fa-twitter" aria-hidden="true"></i>
-               <i class="social fa fa-linkedin" aria-hidden="true"></i>
-               <i class="social fa fa-pinterest" aria-hidden="true"></i>
-               <i class="social fa fa-youtube" aria-hidden="true"></i>
-               <i class="social fa fa-github" aria-hidden="true"></i><br>
-               <input type="email" placeholder="Subscribete e informate"><button class="btn btn-success">Subscribete</button>
+            <h2>Productos registrados </h2>
+            <h4>En esta tabla se encuentran registrados todos los productos en el inventario:</h4>
+            <div class="table-responsive ">
+                <table class="table">
+                    <thead>
+                        <tr class="bg-primary">
+                            <th>#</th>
+                            <th>Nombre Producto</th>
+                            <th>Descripción Producto</th>
+                            <th>Cantidad</th>
+                            <th>Nombre Imagen</th>
+                            <th>Tipo</th>
+                            <th>Precio Venta</th>
+                            <th>Precio Compra</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaInventario">
+                        <!--Se llenan don una Desde FireBase-->
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-</div>
+    </div>
+
+    <!---- fin Contacto ----->
+
+
+
+
+
+    <div id="footer" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <h4 class="wow fadeInUp">Nuestro Contacto</h4>
+                    <p><i class="fa fa-home" aria-hidden="true"></i> 111 Venustiano Carranza S/N, Huetamo Mich., 61981</p>
+                    <p><i class="fa fa-envelope" aria-hidden="true"></i> info@MUEBLERIAESPINOSA.com</p>
+                    <p><i class="fa fa-phone" aria-hidden="true"></i> 435 55 635 91</p>
+                    <p><i class="fa fa-globe" aria-hidden="true"></i> www.MUEBLERIAESPINOSA.com</p>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h4>Aprende Más</h4>
+                    <p><i class="fa fa-square-o" aria-hidden="true"></i> Nosotros</p>
+                    <p><i class="fa fa-square-o" aria-hidden="true"></i> Privacidad</p>
+                    <p><i class="fa fa-square-o" aria-hidden="true"></i> Terminos & Condiciones</p>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h4>Conocenos </h4>
+                    <i class="social fa fa-home" aria-hidden="true"></i>
+                    <i class="social fa fa-twitter" aria-hidden="true"></i>
+                    <i class="social fa fa-linkedin" aria-hidden="true"></i>
+                    <i class="social fa fa-pinterest" aria-hidden="true"></i>
+                    <i class="social fa fa-youtube" aria-hidden="true"></i>
+                    <i class="social fa fa-github" aria-hidden="true"></i><br>
+                    <input type="email" placeholder="Subscribete e informate"><button class="btn btn-success">Subscribete</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
 
 
 
-<script src="jsCode/inventarioProductos.js"></script>
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="js/wow.min.js"></script>
-  <script>
-  new WOW().init();
-  </script>
-  <script src="js/bootstrap.min.js"></script>
+    <script src="jsCode/inventarioProductos.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src="js/bootstrap.min.js"></script>
 
 </body>
+
 </html>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>INVENTARIO</title>
+    <title>Clientes</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -16,9 +17,9 @@
 
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-                <!-- FireStore -->
-                <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-                <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+    <!-- FireStore -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -28,8 +29,9 @@
 
 
 </head>
+
 <body>
-    
+
 
     <div id="myNavbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container">
@@ -39,7 +41,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
+
                 <a href="index.html" class="navbar-brand">MUEBLERIA</a>
             </div>
             <div class="navbar-collapse collapse">
@@ -50,211 +52,208 @@
                     <li><a href="inventario.html">INVENTARIO</a></li>
                     <li><a href="#">CLIENTES</a></li>
                     <li><a href="catalogo.html">CATALAGO</a></li>
-                   
+
                 </ul>
             </div>
         </div>
     </div>
     <br>
-    <!-- registro de Cliente<--> 
+    <!-- registro de Cliente<-->
     <div id="contact" class="contact">
-      <div class="container">
-          <div class="row">
-              <h2 class="wow fadeInUp">Registrar a un nuevo Cliente</h2>
-              <div class="col-lg-6 ">
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                      <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-                      <input id="nombreCompleto" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Nombe (s)">
-                  </div>
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                      <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-                      <input id="apellidoP" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Apellido Paterno">
-                  </div>
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                      <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-                      <input id="apellidoM" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Apellido Materno">
-                  </div>
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                      <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-                      <input id="curp" type="text" class="form-control text-uppercase" aria-describedby="sizing-addon1" placeholder="CURP">
-                  </div>
+        <div class="container">
+            <div class="row">
+                <h2 class="wow fadeInUp">Registrar a un nuevo Cliente</h2>
+                <div class="col-lg-6 ">
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <input id="nombreCompleto" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Nombe (s)">
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <input id="apellidoP" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Apellido Paterno">
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <input id="apellidoM" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Apellido Materno">
+                    </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-certificate" aria-hidden="true"></i></span>
+                        <input id="curp" type="text" class="form-control text-uppercase" aria-describedby="sizing-addon1" placeholder="CURP">
+                    </div>
 
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <input id="edad" type="date" class="form-control" aria-describedby="sizing-addon1" placeholder="Fecha de nacimiento">
-                  </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <input id="edad" type="date" class="form-control" aria-describedby="sizing-addon1" placeholder="Fecha de nacimiento">
+                    </div>
 
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
-                    <!--<input type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Genero">-->
-                    <select id="genero" class="form-control" aria-describedby="sizing-addon1" placeholder="Genero">
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                        <!--<input type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Genero">-->
+                        <select id="genero" class="form-control" aria-describedby="sizing-addon1" placeholder="Genero">
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Indefinido">Indefinido</option>
                     </select>
-                  </div>
-
-  
-                  
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-envelope" aria-hidden="true"></i></span>
-                    <input id="correo" type="email" class="form-control" aria-describedby="sizing-addon1" placeholder="Direccion de correo">
-                  </div>
-
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
-                    <input id="comudidad" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Comunidad">
-                  </div>
-
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
-                    <input id="direccion" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Dirección">
-                  </div>
-
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
-                    <input id="descripcionLugar" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Descripcion del lugar habitación">
-                  </div>
-
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-phone" aria-hidden="true"></i></span>
-                    <input required maxlength="10" minlength="10" id="numeroTelefono" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" aria-describedby="sizing-addon1" placeholder="Numero de Telefono">
-                  </div>
-
-                   
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                      <label for="exampleFormControlFile1" class=""  aria-hidden="true">Subir Credencial</label>
-                      <input id="credencial" type="file" class="form-control" aria-describedby="sizing-addon1"  placeholder="">
-                  </div>
-
-                  <div class="progress">
-                    <div id="progressCredencial" class="progress-bar progress-bar-striped active" role="progressbar"
-                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                     </div>
-                  </div>
 
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                    <label for="exampleFormControlFile1" class=""  aria-hidden="true">Subir Comprobante de Domicilio</label>
-                    <input id="comprobanteDomicilio" type="file" class="form-control" aria-describedby="sizing-addon1"  placeholder="">
-                  </div>
 
-                  <div class="progress">
-                    <div id="progressDomicilio" class="progress-bar progress-bar-striped active" role="progressbar"
-                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <input id="correo" type="email" class="form-control" aria-describedby="sizing-addon1" placeholder="Direccion de correo">
                     </div>
-                  </div>
 
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
-                    <input readonly id="longitud" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Longitud">
-                  </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
+                        <input id="comudidad" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Comunidad">
+                    </div>
 
-                  <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
-                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
-                    <input readonly id="latitud" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Latitud">
-                  </div>
-                  <button id="btnLocalizacionCliente" onclick="localizacionCliente()" class="btn btn-sm" data-wow-delay="1.2s">Obtener Ubicacion</button>
-                  
-                  <div id="mensajeConfi" class="input-group wow fadeInUp " data-wow-delay="2s">
-                     
-                  </div>
-                  <button id="btnGuardarClientes" onclick="guardarCliente()"  type="submit" class="btn btn-lg wow fadeInUp informate" data-wow-delay="1.2s">Registrar</button>
-                  <div class="col-lg-6 col-md-6 wow bounceInRight">
-                  </div>
-              </div>
-            
-              <div class="col-lg-6">
-                <h3>Imagenes</h3>
-                <div class="">
-                  <!--<img id="imagenes_Cargadas_Firebase" src="" alt="">-->
-                  <iframe style="width: 100%" id="imagenes2Cargadas" src=""></iframe>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
+                        <input id="direccion" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Dirección">
+                    </div>
+
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-home" aria-hidden="true"></i></span>
+                        <input id="descripcionLugar" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Descripcion del lugar habitación">
+                    </div>
+
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.6s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                        <input required maxlength="10" minlength="10" id="numeroTelefono" type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" aria-describedby="sizing-addon1" placeholder="Numero de Telefono">
+                    </div>
+
+
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <label for="exampleFormControlFile1" class="" aria-hidden="true">Subir Credencial</label>
+                        <input id="credencial" type="file" class="form-control" aria-describedby="sizing-addon1" placeholder="">
+                    </div>
+
+                    <div class="progress">
+                        <div id="progressCredencial" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                        </div>
+                    </div>
+
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <label for="exampleFormControlFile1" class="" aria-hidden="true">Subir Comprobante de Domicilio</label>
+                        <input id="comprobanteDomicilio" type="file" class="form-control" aria-describedby="sizing-addon1" placeholder="">
+                    </div>
+
+                    <div class="progress">
+                        <div id="progressDomicilio" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                        </div>
+                    </div>
+
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+                        <input readonly id="longitud" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Longitud">
+                    </div>
+
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="1.2s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+                        <input readonly id="latitud" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Latitud">
+                    </div>
+                    <button id="btnLocalizacionCliente" onclick="localizacionCliente()" class="btn btn-sm" data-wow-delay="1.2s">Obtener Ubicacion</button>
+
+                    <div id="mensajeConfi" class="input-group wow fadeInUp " data-wow-delay="2s">
+
+                    </div>
+                    <button id="btnGuardarClientes" onclick="guardarCliente()" type="submit" class="btn btn-lg wow fadeInUp informate" data-wow-delay="1.2s">Registrar</button>
+                    <div class="col-lg-6 col-md-6 wow bounceInRight">
+                    </div>
                 </div>
-              </div>
-  
-          </div>
 
-          
+                <div class="col-lg-6">
+                    <h3>Imagenes</h3>
+                    <div class="">
+                        <!--<img id="imagenes_Cargadas_Firebase" src="" alt="">-->
+                        <iframe style="width: 100%" id="imagenes2Cargadas" src=""></iframe>
+                    </div>
+                </div>
+
+            </div>
+
+
         </div>
         <br>
         <h2>Clientes Registrados</h2>
         <h4>En esta tabla se encuentran registrados todos los Clientes:</h4>
         <br>
-        <input style="width: 30%; " class="form-control" id="myInput" type="text" placeholder="Buscar...">                                                   
-          <div class="table-responsive">          
+        <input style="width: 30%; " class="form-control" id="myInput" type="text" placeholder="Buscar...">
+        <div class="table-responsive">
             <table class="table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Nombre</th>
-                  <th>Apellido Paterno</th>
-                  <th>Apellido Materno</th>
-                  <th>Curp</th>
-                  <th>Fecha de Nacimiento</th>
-                  <th>Genero</th>
-                  <th>E-mail</th>
-                  <th>Comunidad</th>
-                  <th>Dirección</th>
-                  <th>Descripcion de Habitación</th>
-                  <th>Telefono</th>
-                  <th>Credencial</th>
-                  <th>Comprobante de Domicilio</th>
-                </tr>
-              </thead>
-              <tbody id="tablaClientes">
-                  <!-- Los datos se llenan con una consulta -->
-              </tbody>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Curp</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Genero</th>
+                        <th>E-mail</th>
+                        <th>Comunidad</th>
+                        <th>Dirección</th>
+                        <th>Descripcion de Habitación</th>
+                        <th>Telefono</th>
+                        <th>Credencial</th>
+                        <th>Comprobante de Domicilio</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaClientes">
+                    <!-- Los datos se llenan con una consulta -->
+                </tbody>
             </table>
-          </div>
-      </div>
+        </div>
     </div>
-</div>
- 
- <!---- fin registro de clente ----->
+    </div>
+    </div>
 
-<div id="footer" class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-4">
-                <h4 class="wow fadeInUp">Nuestro Contacto</h4>
-                <p><i class="fa fa-home" aria-hidden="true"></i> 111 Venustiano Carranza S/N, Huetamo Mich., 61981</p>
-                <p><i class="fa fa-envelope" aria-hidden="true"></i> info@MUEBLERIAESPINOSA.com</p>
-                <p><i class="fa fa-phone" aria-hidden="true"></i> 435 55 635 91</p>
-                <p><i class="fa fa-globe" aria-hidden="true"></i> www.MUEBLERIAESPINOZA.com</p>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <h4>Aprende Más</h4>
-                <p><i class="fa fa-square-o" aria-hidden="true"></i> Nosotros</p>
-                <p><i class="fa fa-square-o" aria-hidden="true"></i> Privacidad</p>
-                <p><i class="fa fa-square-o" aria-hidden="true"></i> Terminos & Condiciones</p>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <h4>Conocenos </h4>
-                <i class="social fa fa-facebook" aria-hidden="true"></i>
-                <i class="social fa fa-twitter" aria-hidden="true"></i>
-               <i class="social fa fa-linkedin" aria-hidden="true"></i>
-               <i class="social fa fa-pinterest" aria-hidden="true"></i>
-               <i class="social fa fa-youtube" aria-hidden="true"></i>
-               <i class="social fa fa-github" aria-hidden="true"></i><br>
-               <input type="email" placeholder="Subscribete e informate"><button class="btn btn-success">Subscribete</button>
+    <!---- fin registro de clente ----->
+
+    <div id="footer" class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <h4 class="wow fadeInUp">Nuestro Contacto</h4>
+                    <p><i class="fa fa-home" aria-hidden="true"></i> 111 Venustiano Carranza S/N, Huetamo Mich., 61981</p>
+                    <p><i class="fa fa-envelope" aria-hidden="true"></i> info@MUEBLERIAESPINOSA.com</p>
+                    <p><i class="fa fa-phone" aria-hidden="true"></i> 435 55 635 91</p>
+                    <p><i class="fa fa-globe" aria-hidden="true"></i> www.MUEBLERIAESPINOZA.com</p>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h4>Aprende Más</h4>
+                    <p><i class="fa fa-square-o" aria-hidden="true"></i> Nosotros</p>
+                    <p><i class="fa fa-square-o" aria-hidden="true"></i> Privacidad</p>
+                    <p><i class="fa fa-square-o" aria-hidden="true"></i> Terminos & Condiciones</p>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h4>Conocenos </h4>
+                    <i class="social fa fa-facebook" aria-hidden="true"></i>
+                    <i class="social fa fa-twitter" aria-hidden="true"></i>
+                    <i class="social fa fa-linkedin" aria-hidden="true"></i>
+                    <i class="social fa fa-pinterest" aria-hidden="true"></i>
+                    <i class="social fa fa-youtube" aria-hidden="true"></i>
+                    <i class="social fa fa-github" aria-hidden="true"></i><br>
+                    <input type="email" placeholder="Subscribete e informate"><button class="btn btn-success">Subscribete</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script src="jsCode/clientes.js"></script>
+    <script src="jsCode/clientes.js"></script>
 
-<script>
-  $(document).ready(function(){
-    $("#myInput").on("keyup", function() {
-      var value = $(this).val().toLowerCase();
-      $("#tablaClientes tr").filter(function() {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-</script>
+    <script>
+        $(document).ready(function() {
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#tablaClientes tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 
 </body>
+
 </html>
-
-
