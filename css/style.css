@@ -44,7 +44,7 @@ p {
 }
 
 .btn:hover {
-    background-color: #9e0909;
+    background-color: #0ab4ac;
     color: orange;
 }
 
@@ -53,14 +53,14 @@ p {
 
 .navbar {
     text-align: center;
-    background-color: rgba(56, 54, 54, 0.596);
+    background-color: rgba(34, 133, 119, 0.596);
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
 }
 
 .navbar a {
-    color: #222222 !important;
+    color: #f5f9fa !important;
     opacity: 0.7;
     font-style: initial;
 }
@@ -343,12 +343,12 @@ p {
     border-radius: 0;
     width: 100%;
     font-size: 15px;
-    background-color: #6699cc;
+    background-color: #1c75ce;
     color: #fff;
 }
 
 .contact .btn:hover {
-    background-color: #a85959 !important;
+    background-color: #169e8c !important;
     color: #fff !important;
 }
 
@@ -383,8 +383,8 @@ p {
     width: 160px;
     padding: 10px;
     border: none;
-    background-color: #cccccc;
-    color: rgb(207, 16, 16);
+    background-color: #423a3a;
+    color: rgb(231, 223, 223);
 }
 
 .footer .btn {

@@ -87,13 +87,12 @@
                     </div>
                     <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                         <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-eyedropper" aria-hidden="true"></i></span>
-                        <input id="color" type="color" class="form-control" aria-describedby="sizing-addon1" placeholder="Color">
+                        <input id="color" type="text" class="form-control" aria-describedby="sizing-addon1" placeholder="Color">
                     </div>
 
                     <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-photo" aria-hidden="true"></i></span>
                         <input id="imagen_Producto" type="file" class="form-control" aria-describedby="sizing-addon1" placeholder="Imagen">
-                        <span onclick="subirImagenen_Producto_FireBase()" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"><i class="glyphicon glyphicon-cloud-upload" ></i></span>
+                        <span onclick="subirImagenen_Producto_FireBase()" class="input-group-addon wow fadeInUp" data-wow-delay="0.8s" id="sizing-addon1"></span>
                     </div>
 
                     <div class="progress wow fadeInUp" data-wow-delay="0.8s">
@@ -121,18 +120,18 @@
                       
                     </select>
                     </div>
+                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
+                        <input id="precio_Compra" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Compra">
+                    </div>
 
                     <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
                         <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
                         <input id="precio_Venta" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Venta de Contado">
                     </div>
-                    <div class="input-group input-group-lg wow fadeInUp" data-wow-delay="0.8s">
-                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-tag" aria-hidden="true"></i></span>
-                        <input id="precio_Compra" type="number" class="form-control" aria-describedby="sizing-addon1" placeholder="Precio Compra">
-                    </div>
                     <div id="mensajeResultados" class="input-group wow fadeInUp" data-wow-delay="2s">
-
                     </div>
+
                 </div>
                 <div id="controlesImagenes" style="display: none" class="col-md-6">
                     <img src="" alt="">
@@ -176,20 +175,23 @@
             <br>
             <h2>Productos registrados </h2>
             <h4>En esta tabla se encuentran registrados todos los productos en el inventario:</h4>
+            <br>
+            <input style="width: 30%; " class="form-control" id="myInput" type="text" placeholder="Buscar...">
             <div class="table-responsive ">
                 <table class="table">
                     <thead>
                         <tr class="bg-primary">
                             <th>#</th>
-                            <th>Nombre Producto</th>
-                            <th>Descripción Producto</th>
+                            <th>Nombre del Producto</th>
+                            <th>Clave del Producto</th>
+                            <th>Descripción</th>
+                            <th>Color</th>
+                            <th>Imagen</th>
+                            <th>Fecha</th>
                             <th>Cantidad</th>
-                            <th>Nombre Imagen</th>
                             <th>Tipo</th>
-                            <th>Precio Venta</th>
                             <th>Precio Compra</th>
-                            <th></th>
-                            <th></th>
+                            <th>Precio Venta Contado</th>
                         </tr>
                     </thead>
                     <tbody id="tablaInventario">
