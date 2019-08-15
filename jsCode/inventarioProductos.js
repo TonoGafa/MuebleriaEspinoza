@@ -34,7 +34,7 @@ function subirImagenen_Producto_FireBase(){
               //console.log(doc.id, " => ", doc.data());
               if(doc.data().ImagenenProducto==imagenProducto.name){
                 existeimagen=existeimagen+1;
-                //alert(existeimagen)
+                //alert(existeimagen) 
               }
           });
           if(existeimagen>=1){
